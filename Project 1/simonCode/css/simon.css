@@ -1,5 +1,76 @@
-body {
+h1 {
+
+	
+
+}
+
+h2 {
+	margin: 0px;
+	float: right;
+
+}
+
+
+
+#boxes {
+
+	margin: 0px auto;
+	text-align: center;
+	padding: 20px;
+
+}
+
+#board {
+	clear: both;
+	background-color: blue;
+	height: 450px;
+	width: 450px;
+	display: block;
+	margin: 20px auto;
+
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button {
+
+	border: 20px solid black;
+	height: 200px;
+	width: 200px;
+	padding: 0px;
+	margin-right: -4px;
+	text-align: center;
+
+
+}
+
+#red {
+
+	background-color: red;
+	border-radius: 200px 0px 0px 0px;
+
+}
+
+
+#blue {
 
 	background-color: blue;
+	border-radius: 0px 0px 0px 200px;
+
+}
+
+#green {
+
+	background-color: green;
+	border-radius: 0px 200px 0px 0px;
+	
+}
+
+#yellow {
+
+	background-color: yellow;
+	border-radius: 0px 0px 200px 0px;
 
 }
