@@ -5,14 +5,13 @@ $(document).ready(function() {
 	var playerClick;
 	var playerClickLog = [];
 
-	var redButton = $("#red").val();
-	var greenButton = $("#green").val();
-	var blueButton = $("#blue").val();
-	var yellowButton = $("#yellow").val();
+	var redButton = $(".red").val();
+	var greenButton = $(".green").val();
+	var blueButton = $(".blue").val();
+	var yellowButton = $(".yellow").val();
 
 	var round = 0;
 
-	changeColour();
 	colourGenerator();
 	checkForClick();
 	
@@ -60,6 +59,8 @@ $(document).ready(function() {
 		}
 
 		simonLog.push(simonButton);
+		
+		flash(simonButton);
 		console.log(simonButton);
 		
 	};
@@ -86,8 +87,6 @@ $(document).ready(function() {
 
 	};
 
-
-
 	function assessClickLog() {
 
 		if (playerClickLog[round] == simonLog[round]) {
@@ -106,54 +105,11 @@ $(document).ready(function() {
 
 	}
 
-
-
-
-
-	function changeColour(){
-		
-		console.log('change to flash');
+	function flash(){
 		
 		$("#redButton").toggleClass("buttonFlash");
 		
 	};
-
-
-	//FROM DACING SQUARES
-	// function changeBox(obj){
-
-	//   var bigBoxColour = bigBox.style.backgroundColor;
-	  
-	//   bigBox.style.backgroundColor = 'red';	  
-
-	//   setTimeout(function(){
-	      
-	//       bigBox.style.backgroundColor = bigBoxColour;
-	     
-	//   }, 500);
-
-
-	// CHECK HOW SQUARES FLASHED IN DANCING SQUARES 
-	// function buttonFlash() {
-
-	// 	$("#red").toggleClass("buttonFlash");
-
-	// 	setTimeout(buttonFlash, 2000);
-
-	// 	console.log($("#red"));
-
-	// };
-
-	// setTimeout(buttonFlash, 2000);
-
-
-	
-
-
-
-
-
-
 
 
 
