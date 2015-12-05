@@ -1,36 +1,16 @@
 $(document).ready(function() {
 
 	var simonButton;
-	var simonLog = [];
+	var simonLog = ["redButton", "blueButton", "greenButton"];
 	var playerClick;
 	var playerClickLog = [];
 
 	var round = 0;
 
-	colourGenerator();
-	checkForClick();
+	//colourGenerator();
+	//checkForClick();
+	simonFlash();
 	
-	
-	function checkForClick() {
-		
-		console.log(simonLog.length);
-
-		console.log(playerClickLog.length);
-
-		if (playerClickLog.length === simonLog.length) {
-
-			assessClickLog();
-
-		}
-
-		else {
-
-			playerTurn();
-
-		};
-	}
-
-
 	function colourGenerator(){
 
 		var redButton = $(".red");
@@ -58,11 +38,10 @@ $(document).ready(function() {
 
 		}
 
-		simonLog.push(simonButton.val());
-		
+		simonLog.push(simonButton.attr('id'));
 
+		simonFlash(simonButton.attr('id'));
 
-		flash(simonButton.attr('id'));
 		console.log(simonButton.attr('id'));
 		
 	};
@@ -71,23 +50,42 @@ $(document).ready(function() {
 		
 	function playerTurn(){
 
-		$(".button").each(function(){
+		$("input").each(function(){
 
 			$(this).click(function(){
 
-				playerClick = $(this).val();
+				playerClick = $(this);
 
-				playerClickLog.push(playerClick);
+				playerClickLog.push(playerClick.attr('id'));
 
-				console.log(playerClick);
+				playerFlash(playerClick.attr('id'));
 
-				checkForClick();
+				checkForClick(); 
 
 			})	
 
 		})
 
 	};
+
+	function checkForClick() {
+		
+		console.log(simonLog);
+
+		console.log(playerClickLog);
+
+		if (playerClickLog.length === simonLog.length) {
+
+			assessClickLog();
+
+		}
+
+		else {
+
+			playerTurn();
+
+		};
+	}
 
 	function assessClickLog() {
 
@@ -107,13 +105,24 @@ $(document).ready(function() {
 
 	}
 
-	function flash(buttonId){
+	function simonFlash(){
+		
+		for (i = 0; i < simonLog.length; i++) {
+			
+			(function(i){
+			  setTimeout(function(){
+			            
+			  	$("#" + simonLog[i]).toggleClass("buttonFlash");			
+
+				}, 1000 * i);
+			}(i));
+		}
+	}		
+
+	function playerFlash(buttonId){
 		
 		$("#" + buttonId).toggleClass("buttonFlash");
 		
 	};
-
-
-
 
 });
