@@ -12,6 +12,7 @@ $(document).ready(function() {
 
 	var round = 0;
 
+	changeColour();
 	colourGenerator();
 	checkForClick();
 	
@@ -110,17 +111,11 @@ $(document).ready(function() {
 
 
 	function changeColour(){
-
-		setTimeout(function(){
-
-		  $("#red").toggleClass("buttonFlash");	  
-
-		  setTimeout(function(){
-		      
-		      $("#red").toggleClass("button");
-		     
-		  }, 500);
-		}, 500);
+		
+		console.log('change to flash');
+		
+		$("#redButton").toggleClass("buttonFlash");
+		
 	};
 
 

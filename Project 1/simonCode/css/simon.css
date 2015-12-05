@@ -34,8 +34,30 @@ h2 {
   outline: none;
 }
 
-.button {
+@keyframes example {
+    0%   {background-color: red;}
+    50%  {background-color: black;}
+    100% {background-color: red;}
+}
 
+.buttonFlash {
+
+	border-radius: 200px 0px 0px 0px;
+	border: 20px solid black;
+	height: 200px;
+	width: 200px;
+	padding: 0px;
+	margin-right: -4px;
+	text-align: center;
+	animation-name: example;
+	animation-duration: 0.3s;
+	
+}
+
+.red {
+
+	background-color: red;
+	border-radius: 200px 0px 0px 0px;
 	border: 20px solid black;
 	height: 200px;
 	width: 200px;
@@ -45,37 +67,42 @@ h2 {
 
 }
 
-.buttonFlash {
 
-	background-color: black !important;
-
-}
-
-#red {
-
-	background-color: red;
-	border-radius: 200px 0px 0px 0px;
-
-}
-
-
-#blue {
+.blue {
 
 	background-color: blue;
 	border-radius: 0px 0px 0px 200px;
+	border: 20px solid black;
+	height: 200px;
+	width: 200px;
+	padding: 0px;
+	margin-right: -4px;
+	text-align: center;
 
 }
 
-#green {
+.green {
 
 	background-color: green;
 	border-radius: 0px 200px 0px 0px;
+	border: 20px solid black;
+	height: 200px;
+	width: 200px;
+	padding: 0px;
+	margin-right: -4px;
+	text-align: center;
 	
 }
 
-#yellow {
+.yellow {
 
 	background-color: yellow;
 	border-radius: 0px 0px 200px 0px;
+	border: 20px solid black;
+	height: 200px;
+	width: 200px;
+	padding: 0px;
+	margin-right: -4px;
+	text-align: center;
 
 }
