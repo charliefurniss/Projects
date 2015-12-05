@@ -5,11 +5,6 @@ $(document).ready(function() {
 	var playerClick;
 	var playerClickLog = [];
 
-	var redButton = $(".red").val();
-	var greenButton = $(".green").val();
-	var blueButton = $(".blue").val();
-	var yellowButton = $(".yellow").val();
-
 	var round = 0;
 
 	colourGenerator();
@@ -38,6 +33,11 @@ $(document).ready(function() {
 
 	function colourGenerator(){
 
+		var redButton = $(".red");
+		var greenButton = $(".green");
+		var blueButton = $(".blue");
+		var yellowButton = $(".yellow");
+
 		var randomNumber = Math.random() * 4;
 
 		if (randomNumber <= 1) {
@@ -58,10 +58,12 @@ $(document).ready(function() {
 
 		}
 
-		simonLog.push(simonButton);
+		simonLog.push(simonButton.val());
 		
-		flash(simonButton);
-		console.log(simonButton);
+
+
+		flash(simonButton.attr('id'));
+		console.log(simonButton.attr('id'));
 		
 	};
 
@@ -105,9 +107,9 @@ $(document).ready(function() {
 
 	}
 
-	function flash(){
+	function flash(buttonId){
 		
-		$("#redButton").toggleClass("buttonFlash");
+		$("#" + buttonId).toggleClass("buttonFlash");
 		
 	};
 
