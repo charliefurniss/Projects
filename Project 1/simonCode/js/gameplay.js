@@ -121,6 +121,7 @@ $(document).ready(function() {
 
 				} else {
 
+					errorSound();
 					alert('Game over');
 
 				}
@@ -149,6 +150,20 @@ $(document).ready(function() {
 			
 		};
 
+		function errorSound(){
+
+			console.log('got here');
+
+			// eSound = soundManager.createSound({
+			        
+			//       "url": "audio/faster.wav"
+
+			//     });
+
+			// eSound.play();
+
+		};
+
 		function makeSound(buttonURL){
 
 			mySound = soundManager.createSound({
@@ -159,7 +174,7 @@ $(document).ready(function() {
 
 			mySound.play();
 
-		}
+		};
 
 	}
 
