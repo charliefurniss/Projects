@@ -1,180 +1,150 @@
 $(document).ready(function() {
 
-	var simonButton;
-	var simonLog = [];
-	var playerClick;
-	var playerClickLog = [];
+	soundManager.setup({
+	  url: 'js/soundmanager/swf',
+	  flashVersion: 9,
+	  onready: start
+	});
 
-	var round = 1;
+	function start(){
 
-	colourGenerator();
-	
-	function colourGenerator(){
+		var simonButton;
+		var simonLog = [];
+		var playerClick;
+		var playerClickLog = [];
 
-		var redButton = $(".red");
-		var greenButton = $(".green");
-		var blueButton = $(".blue");
-		var yellowButton = $(".yellow");
+		var round = 1;
 
-		var randomNumber = Math.random() * 4;
+		var buttonCounds = ["audio/after.wav", "audio/better.wav", "audio/do_it.wav", 
+		"audio/ever.wav"]
 
-		if (randomNumber <= 1) {
-
-			simonButton = redButton;
-
-		} else if (randomNumber <= 2) {
-
-			simonButton = greenButton;
-
-		} else if (randomNumber <= 3) {
-
-			simonButton = blueButton;
-
-		} else {
-
-			simonButton = yellowButton;
-
-		}
-
-		simonLog.push(simonButton.attr('id'));
-
-		console.log("simonLog = " + simonLog);
-
-		simonFlash(simonButton.attr('id'));
-
-		pClick();
+		colourGenerator();
 		
-	};
+		function colourGenerator(){
 
-	//accept player click and log the button pushed
-		
-	function playerTurn(){
+			var redButton = $(".red");
+			var greenButton = $(".green");
+			var blueButton = $(".blue");
+			var yellowButton = $(".yellow");
 
-		if (playerClickLog.length < simonLog.length) {
+			var randomNumber = Math.random() * 4;
 
-			pClick();
+			if (randomNumber <= 1) {
 
-		} else {
+				simonButton = redButton;
 
-		assessClickLog();
+			} else if (randomNumber <= 2) {
 
-		}
+				simonButton = greenButton;
 
-	};
+			} else if (randomNumber <= 3) {
 
-	function pClick(){
-
-		$("input").each(function(){
-
-			$(this).click(function(){
-
-				playerClick = $(this);
-
-				playerFlash(playerClick.attr('id'));	
-
-				playerClickLog.push(playerClick.attr('id'));
-
-				console.log(playerClickLog);
-
-				playerTurn();
-
-			})	
-			
-		})
-
-	};
-
-	function assessClickLog() {
-
-		console.log('assessClickLog');
-
-			var simonLogJoined = simonLog.join();
-
-			var playerClickJoined = playerClickLog.join();
-
-			if (simonLogJoined == playerClickJoined) {
-				
-				$("h2").text("Score: " + (round + 1));
-
-				round++;
-
-				playerClickLog.length = 0;
-
-				console.log(playerClickLog);
-				
-				colourGenerator();
+				simonButton = blueButton;
 
 			} else {
 
-				alert('Game over');
+				simonButton = yellowButton;
 
 			}
 
+			simonLog.push(simonButton.attr('id'));
+
+			console.log("simonLog = " + simonLog);
+
+			simonFlash(simonButton.attr('id'));
+
+			pClick();
+			
+		};
+
+		//accept player click and log the button pushed
+			
+		function playerTurn(){
+
+			if (playerClickLog.length < simonLog.length) {
+
+				pClick();
+
+			} else {
+
+			assessClickLog();
+
+			}
+
+		};
+
+		function pClick(){
+
+			$("input").each(function(){
+
+				$(this).click(function(){
+
+					playerClick = $(this);
+
+					playerFlash(playerClick.attr('id'));	
+
+					playerClickLog.push(playerClick.attr('id'));
+
+					console.log(playerClickLog);
+
+					playerTurn();
+
+				})	
+				
+			})
+
+		};
+
+		function assessClickLog() {
+
+			console.log('assessClickLog');
+
+				var simonLogJoined = simonLog.join();
+
+				var playerClickJoined = playerClickLog.join();
+
+				if (simonLogJoined == playerClickJoined) {
+					
+					$("h2").text("Score: " + (round + 1));
+
+					round++;
+
+					playerClickLog.length = 0;
+
+					console.log(playerClickLog);
+					
+					colourGenerator();
+
+				} else {
+
+					alert('Game over');
+
+				}
+
+		}
+
+		function simonFlash(){
+			
+			for (i = 0; i < simonLog.length; i++) {
+				
+				(function(i){
+
+				  setTimeout(function(){
+				            
+				  	$("#" + simonLog[i]).toggleClass(simonLog + "Flash");			
+
+					}, 1000 * i);
+
+				}(i));
+			}
+		}		
+
+		function playerFlash(buttonId){
+			
+			$("#" + buttonId).toggleClass("buttonFlash");
+			
+		};
+
 	}
 
-	function simonFlash(){
-		
-		for (i = 0; i < simonLog.length; i++) {
-			
-			(function(i){
-
-			  setTimeout(function(){
-			            
-			  	$("#" + simonLog[i]).toggleClass(simonLog + "Flash");			
-
-				}, 1000 * i);
-
-			}(i));
-		}
-	}		
-
-	function playerFlash(buttonId){
-		
-		$("#" + buttonId).toggleClass("buttonFlash");
-		
-	};
-
 });
-
-
-
-// function playerClick(){
-
-// 	$("input").each(function(){
-
-// 		$(this).click(function(){
-
-// 			playerClick = $(this);
-
-// 			console.log(playerClick.attr('id'));
-
-// 			playerFlash(playerClick.attr('id'));	
-
-// 			playerClickLog.push(playerClick.attr('id'));
-
-// 		})	
-		
-// 	})
-
-// };
-
-// function compareLogLengths() {
-	
-// 	console.log("playerClickLog length = " + playerClickLog.length);
-
-// 	console.log("playerClickLog = " + playerClickLog);
-
-// 	console.log("simonLog length = " + simonLog.length);
-
-// 	if (playerClickLog.length === simonLog.length) {
-
-// 		assessClickLog();
-
-// 	}
-
-// 	else {
-
-// 		playerTurn();
-
-// 	};
-// }
