@@ -15,8 +15,10 @@ $(document).ready(function() {
 
 		var round = 1;
 
-		var buttonCounds = ["audio/after.wav", "audio/better.wav", "audio/do_it.wav", 
+		var buttonSounds = ["audio/after.wav", "audio/better.wav", "audio/do_it.wav", 
 		"audio/ever.wav"]
+
+		var errorSound = ["audio/faster.wav"]
 
 		colourGenerator();
 		
@@ -52,6 +54,8 @@ $(document).ready(function() {
 			console.log("simonLog = " + simonLog);
 
 			simonFlash(simonButton.attr('id'));
+
+			makeSound(simonButton.attr('url'));
 
 			pClick();
 			
@@ -144,6 +148,18 @@ $(document).ready(function() {
 			$("#" + buttonId).toggleClass("buttonFlash");
 			
 		};
+
+		function makeSound(buttonURL){
+
+			mySound = soundManager.createSound({
+			        
+			      "url": buttonURL
+
+			    });
+
+			mySound.play();
+
+		}
 
 	}
 
