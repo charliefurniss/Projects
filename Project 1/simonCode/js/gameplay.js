@@ -1,15 +1,13 @@
 $(document).ready(function() {
 
 	var simonButton;
-	var simonLog = ["redButton", "blueButton", "greenButton"];
+	var simonLog = [];
 	var playerClick;
 	var playerClickLog = [];
 
-	var round = 0;
+	var round = 1;
 
-	//colourGenerator();
-	//checkForClick();
-	simonFlash();
+	colourGenerator();
 	
 	function colourGenerator(){
 
@@ -40,9 +38,11 @@ $(document).ready(function() {
 
 		simonLog.push(simonButton.attr('id'));
 
+		console.log("simonLog = " + simonLog);
+
 		simonFlash(simonButton.attr('id'));
 
-		console.log(simonButton.attr('id'));
+		pClick();
 		
 	};
 
@@ -50,58 +50,63 @@ $(document).ready(function() {
 		
 	function playerTurn(){
 
+		if (playerClickLog.length < simonLog.length) {
+
+			pClick();
+
+		} else {
+
+		assessClickLog();
+
+		}
+
+	};
+
+	function pClick(){
+
 		$("input").each(function(){
 
 			$(this).click(function(){
 
 				playerClick = $(this);
 
+				playerFlash(playerClick.attr('id'));	
+
 				playerClickLog.push(playerClick.attr('id'));
 
-				playerFlash(playerClick.attr('id'));
+				console.log(playerClickLog);
 
-				checkForClick(); 
+				playerTurn();
 
 			})	
-
+			
 		})
 
 	};
 
-	function checkForClick() {
-		
-		console.log(simonLog);
-
-		console.log(playerClickLog);
-
-		if (playerClickLog.length === simonLog.length) {
-
-			assessClickLog();
-
-		}
-
-		else {
-
-			playerTurn();
-
-		};
-	}
-
 	function assessClickLog() {
 
-		if (playerClickLog[round] == simonLog[round]) {
-			
-			$("h2").text("Score: " + (round + 1));
+		console.log('assessClickLog');
 
-			round++;
-			playerClick = "";
-			colourGenerator();
+			var simonLogJoined = simonLog.join();
 
-		} else {
+			var playerClickJoined = playerClickLog.join();
 
-			alert('Game over');
+			if (simonLogJoined == playerClickJoined) {
+				
+				$("h2").text("Score: " + (round + 1));
 
-		}
+				round++;
+
+				playerClickLog.length = 0;
+				
+				colourGenerator();
+
+			} else {
+
+				alert('Game over');
+
+			}
 
 	}
 
@@ -110,11 +115,13 @@ $(document).ready(function() {
 		for (i = 0; i < simonLog.length; i++) {
 			
 			(function(i){
+
 			  setTimeout(function(){
 			            
 			  	$("#" + simonLog[i]).toggleClass("buttonFlash");			
 
 				}, 1000 * i);
+
 			}(i));
 		}
 	}		
@@ -126,3 +133,46 @@ $(document).ready(function() {
 	};
 
 });
+
+
+
+// function playerClick(){
+
+// 	$("input").each(function(){
+
+// 		$(this).click(function(){
+
+// 			playerClick = $(this);
+
+// 			console.log(playerClick.attr('id'));
+
+// 			playerFlash(playerClick.attr('id'));	
+
+// 			playerClickLog.push(playerClick.attr('id'));
+
+// 		})	
+		
+// 	})
+
+// };
+
+// function compareLogLengths() {
+	
+// 	console.log("playerClickLog length = " + playerClickLog.length);
+
+// 	console.log("playerClickLog = " + playerClickLog);
+
+// 	console.log("simonLog length = " + simonLog.length);
+
+// 	if (playerClickLog.length === simonLog.length) {
+
+// 		assessClickLog();
+
+// 	}
+
+// 	else {
+
+// 		playerTurn();
+
+// 	};
+// }

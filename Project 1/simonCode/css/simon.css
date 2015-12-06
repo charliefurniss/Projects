@@ -56,7 +56,7 @@ h2 {
 
 .red {
 
-	background-color: red;
+	background-color: #BB1B1B;
 	border-radius: 200px 0px 0px 0px;
 	border: 20px solid black;
 	height: 200px;
@@ -74,7 +74,7 @@ h2 {
 
 .blue {
 
-	background-color: blue;
+	background-color: #1B1BBD;
 	border-radius: 0px 0px 0px 200px;
 	border: 20px solid black;
 	height: 200px;
@@ -91,7 +91,7 @@ h2 {
 
 .green {
 
-	background-color: green;
+	background-color: #0F7D0F;
 	border-radius: 0px 200px 0px 0px;
 	border: 20px solid black;
 	height: 200px;
@@ -108,7 +108,7 @@ h2 {
 
 .yellow {
 
-	background-color: yellow;
+	background-color: #B3B31B;
 	border-radius: 0px 0px 200px 0px;
 	border: 20px solid black;
 	height: 200px;
