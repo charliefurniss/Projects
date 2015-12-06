@@ -10,8 +10,6 @@ h2 {
 
 }
 
-
-
 #boxes {
 
 	margin: 0px auto;
@@ -28,31 +26,9 @@ h2 {
 	display: block;
 	margin: 20px auto;
 
-}
-
-
-
-@keyframes example {
-    50%  {background-color: black;}
-}
-
-.buttonFlash {
-
-	border-radius: 200px 0px 0px 0px;
-	border: 20px solid black;
-	height: 200px;
-	width: 200px;
-	padding: 0px;
-	margin-right: -4px;
-	text-align: center;
-	animation-name: example;
-	animation-duration: 0.3s;
-	
-}
-
-#redButton:focus {
-  outline: none;
 }	
+
+/*RED BUTTON STYLE*/
 
 .red {
 
@@ -67,10 +43,24 @@ h2 {
 
 }
 
-
-#blueButton:focus {
+#redButton:focus {
+  
   outline: none;
+
 }
+
+@keyframes redFlash {
+    50%  {background-color: #FF0000;}
+}
+
+.redButtonFlash {
+
+	animation-name: redFlash;
+	animation-duration: 0.3s;
+	
+}
+
+/*BLUE BUTTON STYLE*/
 
 .blue {
 
@@ -85,10 +75,23 @@ h2 {
 
 }
 
-#greenButton:focus {
+#blueButton:focus {
   outline: none;
 }
 
+@keyframes blueFlash {
+    50%  {background-color: #0070FF;}
+}
+
+.blueButtonFlash {
+
+	animation-name: blueFlash;
+	animation-duration: 0.3s;
+	
+}
+
+
+/*GREEN BUTTON STYLE*/
 .green {
 
 	background-color: #0F7D0F;
@@ -102,10 +105,24 @@ h2 {
 	
 }
 
-#yellowButton:focus {
+#greenButton:focus {
   outline: none;
 }
 
+@keyframes greenFlash {
+    50%  {background-color: #03E003;}
+}
+
+.greenButtonFlash {
+
+	animation-name: greenFlash;
+	animation-duration: 0.3s;
+	
+}
+
+
+
+/*YELLOW BUTTON STYLE*/
 .yellow {
 
 	background-color: #B3B31B;
@@ -117,4 +134,19 @@ h2 {
 	margin-right: -4px;
 	text-align: center;
 
+}
+
+#yellowButton:focus {
+  outline: none;
+}
+
+@keyframes yellowFlash {
+    50%  {background-color: yellow;}
+}
+
+.yellowButtonFlash {
+
+	animation-name: yellowFlash;
+	animation-duration: 0.3s;
+	
 }

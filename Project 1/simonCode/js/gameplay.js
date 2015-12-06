@@ -99,6 +99,8 @@ $(document).ready(function() {
 				round++;
 
 				playerClickLog.length = 0;
+
+				console.log(playerClickLog);
 				
 				colourGenerator();
 
@@ -118,7 +120,7 @@ $(document).ready(function() {
 
 			  setTimeout(function(){
 			            
-			  	$("#" + simonLog[i]).toggleClass("buttonFlash");			
+			  	$("#" + simonLog[i]).toggleClass(simonLog + "Flash");			
 
 				}, 1000 * i);
 
