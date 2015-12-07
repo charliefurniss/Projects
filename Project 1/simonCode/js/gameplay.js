@@ -91,7 +91,9 @@ $(document).ready(function() {
 
 					playerClick = $(this);
 
-					//playerFlash(playerClick.attr('class'));	
+					console.log(playerClick.attr('class'));
+
+					playerFlash(playerClick.attr('class'));	
 
 					playerClickLog.push(playerClick.attr('class'));
 
@@ -113,13 +115,17 @@ $(document).ready(function() {
 
 				if (simonLogJoined == playerClickJoined) {
 					
-					$("h2").text("Score: " + (round + 1));
+					$("h2").text("Score: " + (round));
 
 					round++;
 
 					playerClickLog.length = 0;
 
-					colourGenerator();
+					setTimeout(function(){
+
+						colourGenerator();
+
+					}, 1000);
 
 				} else {
 
@@ -135,8 +141,6 @@ $(document).ready(function() {
 			for (i = 0; i < simonLog.length; i++) {
 
 				console.log(simonLog[i]);
-
-				var flashingButton = $("." + simonLog[i]);
 
 				(function(i){
 
@@ -166,10 +170,16 @@ $(document).ready(function() {
 
 		}
 
-		function playerFlash(buttonId){
-			
-			$("#" + buttonId).addClass(simonLog[i] + "Flash");
-			
+		function playerFlash(buttonClass){
+
+			$("." + buttonClass).css("background-color", $("." + buttonClass).attr('id'));
+
+				setTimeout(function(){
+
+					$("." + buttonClass).css("background-color", $("." + buttonClass).attr('value'));
+
+				}, 300);
+	
 		};
 
 		function faultSound(){
