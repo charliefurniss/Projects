@@ -16,11 +16,12 @@ $(document).ready(function() {
 		var round = 1;
 
 		var buttonSounds = ["audio/after.wav", "audio/better.wav", "audio/do_it.wav", 
-		"audio/ever.wav"]
+		"audio/ever.wav"];
 
-		var errorSound = ["audio/faster.wav"]
+		var faultSound = ["audio/faster.wav"];
 
 		colourGenerator();
+
 		
 		function colourGenerator(){
 
@@ -53,13 +54,14 @@ $(document).ready(function() {
 
 			console.log("simonLog = " + simonLog);
 
-			simonFlash(simonButton.attr('id'));
+			simonFlash();
 
-			makeSound(simonButton.attr('url'));
+			//makeSound(simonButton.attr('url'));
 
 			pClick();
-			
+
 		};
+
 
 		//accept player click and log the button pushed
 			
@@ -81,7 +83,9 @@ $(document).ready(function() {
 
 			$("input").each(function(){
 
-				$(this).click(function(){
+				$(this).on("click", function(){
+
+					$("input").off("click");
 
 					playerClick = $(this);
 
@@ -89,11 +93,9 @@ $(document).ready(function() {
 
 					playerClickLog.push(playerClick.attr('id'));
 
-					console.log(playerClickLog);
-
 					playerTurn();
 
-				})	
+				})
 				
 			})
 
@@ -115,13 +117,11 @@ $(document).ready(function() {
 
 					playerClickLog.length = 0;
 
-					console.log(playerClickLog);
-					
 					colourGenerator();
 
 				} else {
 
-					errorSound();
+					//faultSound();
 					alert('Game over');
 
 				}
@@ -129,14 +129,16 @@ $(document).ready(function() {
 		}
 
 		function simonFlash(){
-			
+
 			for (i = 0; i < simonLog.length; i++) {
 				
+				console.log(simonLog[i]);
+
 				(function(i){
 
 				  setTimeout(function(){
-				            
-				  	$("#" + simonLog[i]).toggleClass(simonLog + "Flash");			
+				        console.log("Flash " + i);    
+				  	$("#" + simonLog[i]).toggleClass(simonLog[i] + "Flash");			
 
 					}, 1000 * i);
 
@@ -150,17 +152,15 @@ $(document).ready(function() {
 			
 		};
 
-		function errorSound(){
+		function faultSound(){
 
-			console.log('got here');
-
-			// eSound = soundManager.createSound({
+			eSound = soundManager.createSound({
 			        
-			//       "url": "audio/faster.wav"
+			      "url": "audio/faster.wav"
 
-			//     });
+			    });
 
-			// eSound.play();
+			eSound.play();
 
 		};
 
