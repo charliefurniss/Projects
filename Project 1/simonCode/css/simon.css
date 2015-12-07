@@ -43,7 +43,7 @@ h2 {
 
 }
 
-#redButton:focus {
+.red:focus {
   
   outline: none;
 
@@ -75,7 +75,7 @@ h2 {
 
 }
 
-#blueButton:focus {
+.blue:focus {
   outline: none;
 }
 
@@ -105,7 +105,7 @@ h2 {
 	
 }
 
-#greenButton:focus {
+.green:focus {
   outline: none;
 }
 
@@ -119,7 +119,6 @@ h2 {
 	animation-duration: 0.3s;
 	
 }
-
 
 
 /*YELLOW BUTTON STYLE*/
@@ -136,7 +135,7 @@ h2 {
 
 }
 
-#yellowButton:focus {
+.yellow:focus {
   outline: none;
 }
 

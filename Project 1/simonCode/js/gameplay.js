@@ -13,6 +13,8 @@ $(document).ready(function() {
 		var playerClick;
 		var playerClickLog = [];
 
+		var numberOfButtons = 4;
+
 		var round = 1;
 
 		var buttonSounds = ["audio/after.wav", "audio/better.wav", "audio/do_it.wav", 
@@ -50,7 +52,7 @@ $(document).ready(function() {
 
 			}
 
-			simonLog.push(simonButton.attr('id'));
+			simonLog.push(simonButton.attr('class'));
 
 			console.log("simonLog = " + simonLog);
 
@@ -89,9 +91,9 @@ $(document).ready(function() {
 
 					playerClick = $(this);
 
-					playerFlash(playerClick.attr('id'));	
+					//playerFlash(playerClick.attr('class'));	
 
-					playerClickLog.push(playerClick.attr('id'));
+					playerClickLog.push(playerClick.attr('class'));
 
 					playerTurn();
 
@@ -128,27 +130,45 @@ $(document).ready(function() {
 
 		}
 
-		function simonFlash(){
+		function simonFlash(){		
 
 			for (i = 0; i < simonLog.length; i++) {
-				
+
 				console.log(simonLog[i]);
+
+				var flashingButton = $("." + simonLog[i]);
 
 				(function(i){
 
-				  setTimeout(function(){
-				        console.log("Flash " + i);    
-				  	$("#" + simonLog[i]).toggleClass(simonLog[i] + "Flash");			
+					  setTimeout(function(){
+					           
+					  		$("." + simonLog[i]).css("background-color", $("." + simonLog[i]).attr('id'));
 
-					}, 1000 * i);
+					  		setTimeout(function(){
 
-				}(i));
-			}
-		}		
+						  		$("." + simonLog[i]).css("background-color", $("." + simonLog[i]).attr('value'));
+
+						  		}, 300);				  			
+
+						}, 1000 * i);
+
+					}(i));
+			};
+		
+		}
+
+		function removeFlashClasses() {
+
+			$("#redButton").removeClass("redButtonFlash");
+			$("#blueButton").removeClass("blueButtonFlash");
+			$("#greenButton").removeClass("greenButtonFlash");
+			$("#yellowButton").removeClass("yellowButtonFlash");
+
+		}
 
 		function playerFlash(buttonId){
 			
-			$("#" + buttonId).toggleClass("buttonFlash");
+			$("#" + buttonId).addClass(simonLog[i] + "Flash");
 			
 		};
 
