@@ -12,6 +12,7 @@ $(document).ready(function() {
 		var simonLog = [];
 		var playerClick;
 		var playerClickLog = [];
+		var playerClickNumber = 0;
 
 		var round = 1;
 
@@ -70,33 +71,6 @@ $(document).ready(function() {
 
 		};
 
-
-		//accept player click and log the button pushed
-			
-		function playerTurn(){
-
-			if (playerClickLog.length < simonLog.length) {
-
-				pClick();
-
-			} else {
-
-				$("h2").text("score: " + (round));
-
-				round++;
-
-				playerClickLog.length = 0;
-
-				setTimeout(function(){
-
-					colourGenerator();
-
-				}, 1000);
-
-			}
-
-		}
-
 		function pClick(){
 
 			$("input").each(function(){
@@ -107,9 +81,9 @@ $(document).ready(function() {
 
 					playerClick = $(this);
 
-					console.log(playerClick.attr('class'));
+					//console.log(playerClick.attr('class'));
 
-					playerFlash(playerClick.attr('class'));	
+					playerFlashSound(playerClick.attr('class'));	
 
 					playerClickLog.push(playerClick.attr('class'));
 
@@ -121,61 +95,83 @@ $(document).ready(function() {
 
 		};
 
+		//accept player click and log the button pushed
+
 		function assessEachClick() {
-			
-			for (i = 0; i < playerClickLog.length; i++){
 
-				console.log(playerClickLog[i]);
+				console.log(playerClickLog[playerClickNumber]);
 
-				if (playerClickLog[i] == simonLog[i]){	
+				console.log(simonLog[playerClickNumber]);
+
+				if (playerClickLog[playerClickNumber] == simonLog[playerClickNumber]){	
 
 					playerTurn();
 
 					} else {
 
-						// wrongSound();
-						// $("body").append('<input type="button" class="unlucky" value="Unlucky!">');
-
-						alert('game over');
+						endGame();
 
 					}	
 
-				}
+			
+
+		}
+
+		function playerTurn(){
+
+			if (playerClickLog.length < simonLog.length) {
+
+				playerClickNumber++;
+
+				pClick();
+
+			} else {
+
+				$("h2").text("score: " + (round));
+
+				round++;
+
+				playerClickLog.length = 0;
+
+				playerClickNumber = 0;
+
+				setTimeout(function(){
+
+					colourGenerator();
+
+				}, 1000);
 
 			}
+
+		}
 
 		function simonFlashSound(){		
 
 			for (i = 0; i < simonLog.length; i++) {
 
-				console.log(simonLog[i]);
-
 				(function(i){
 
 					  setTimeout(function(){
 					           
-					  		$("." + simonLog[i]).css("background-color", $("." + simonLog[i]).attr('id'));
+				  		$("." + simonLog[i]).css("background-color", $("." + simonLog[i]).attr('id'));
 
-					  		makeSound($("." + simonLog[i]).attr('url'));
+				  		//makeSound($("." + simonLog[i]).attr('url'));
 
-					  		setTimeout(function(){
+				  		setTimeout(function(){
 
-						  		$("." + simonLog[i]).css("background-color", $("." + simonLog[i]).attr('value'));
+					  		$("." + simonLog[i]).css("background-color", $("." + simonLog[i]).attr('value'));
 
-						  		}, 300);				  			
-
+					  		}, 300);				  			
 						}, 1000 * i);
-
 					}(i));
-			};
-		
+			};		
 		}
 
-		function playerFlash(buttonClass){
+		function playerFlashSound(buttonClass){
 
 			$("." + buttonClass).css("background-color", $("." + buttonClass).attr('id'));
 
-			makeSound($("." + buttonClass).attr('url'));
+			//makeSound($("." + buttonClass).attr('url'));
 
 				setTimeout(function(){
 
@@ -189,7 +185,7 @@ $(document).ready(function() {
 
 			eSound = soundManager.createSound({
 			        
-			      "url": "audio/faster.wav"
+			      "url": "audio/errorSound.mp3"
 
 			    });
 
@@ -210,6 +206,17 @@ $(document).ready(function() {
 			mySound.play();
 
 		};
+
+		function endGame(){
+
+			console.log('endGame');
+
+			//wrongSound();
+			// $("body").append('<input type="button" class="unlucky" value="Unlucky!">');
+
+			alert('game over');
+
+		}
 
 	}
 
