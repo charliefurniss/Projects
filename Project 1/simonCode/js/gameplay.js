@@ -14,9 +14,9 @@ $(document).ready(function() {
 		var playerClickLog = [];
 		var playerClickNumber = 0;
 
-		var playerName;
-
 		var round = 1;
+
+		var playerName;
 
 		var faultSound = ["audio/faster.wav"];
 
@@ -35,8 +35,6 @@ $(document).ready(function() {
 
 			$("#board").css("display", "none");
 			$("#infoWindow").slideDown();
-
-			$("#enterName").text("please enter your name to start");
 			$("#enterName").slideDown();
 			$("#nameInput").slideDown();
 
@@ -44,21 +42,17 @@ $(document).ready(function() {
 
 			$(document).keypress(function(e){
 
-				playerName = $("#nameInput").val();
+				playerName = $("#nameInput").val().toLowerCase();
 
 				if (e.which == 13) {
 
-					console.log(playerName);
+					$("#enterName").css("display", "none");
+					$("#nameInput").css("display", "none");
+					$("#nameInput").val("");
 
-					displayPlayerName(playerName);
+					$(document).unbind("keypress");
 
-					$("#infoWindow").css("display", "none");
-					
-					setTimeout(function(){
-
-						$("#board").css("display", "block");
-				
-					}, 1000);
+					setUpGame();
 
 					startGame();
 
@@ -67,6 +61,27 @@ $(document).ready(function() {
 			})
 
 		};
+
+		function setUpGame(){
+
+			simonButton = "";
+			simonLog = [];
+			playerClick = "";
+			playerClickLog = [];
+			playerClickNumber = 0;
+			round = 1;
+
+			displayPlayerName(playerName);
+
+			$("#infoWindow").css("display", "none");
+			
+			setTimeout(function(){
+
+				$("#board").css("display", "block");
+			
+			}, 1000);
+
+		}
 
 		function startGame() {
 
@@ -79,6 +94,8 @@ $(document).ready(function() {
 		}
 
 		function displayPlayerName(name){
+
+			console.log(name);
 
 			$("h2").text(name + ": 0");
 			$("h2").slideDown(name + ": 0");
@@ -131,8 +148,6 @@ $(document).ready(function() {
 
 					playerClick = $(this);
 
-					//console.log(playerClick.attr('class'));
-
 					playerFlashSound(playerClick.attr('class'));	
 
 					playerClickLog.push(playerClick.attr('class'));
@@ -159,7 +174,7 @@ $(document).ready(function() {
 
 					} else {
 
-						endGame();
+						alertError();
 
 					}	
 
@@ -205,7 +220,7 @@ $(document).ready(function() {
 					           
 				  		$("." + simonLog[i]).css("background-color", $("." + simonLog[i]).attr('id'));
 
-				  		//makeSound($("." + simonLog[i]).attr('url'));
+				  		makeSound($("." + simonLog[i]).attr('url'));
 
 				  		setTimeout(function(){
 
@@ -221,7 +236,7 @@ $(document).ready(function() {
 
 			$("." + buttonClass).css("background-color", $("." + buttonClass).attr('id'));
 
-			//makeSound($("." + buttonClass).attr('url'));
+			makeSound($("." + buttonClass).attr('url'));
 
 				setTimeout(function(){
 
@@ -239,13 +254,11 @@ $(document).ready(function() {
 
 			    });
 
-			eSound.play();
+			//eSound.play();
 
 		};
 
 		function makeSound(buttonURL){
-
-			//console.log(buttonURL);
 
 			mySound = soundManager.createSound({
 			        
@@ -253,11 +266,11 @@ $(document).ready(function() {
 
 			    });
 
-			mySound.play();
+			//mySound.play();
 
 		};
 
-		function endGame(){
+		function alertError(){
 
 			simonButton = "";
 			simonLog = [];
@@ -266,8 +279,7 @@ $(document).ready(function() {
 			playerClickNumber = 0;
 			round = 1;
 
-			//wrongSound();
-			//$("body").append('<input type="button" class="endGame" value="Unlucky!">');
+			wrongSound();
 
 			$("#board").css("display", "none");
 			$("#infoWindow").slideDown();
@@ -291,7 +303,7 @@ $(document).ready(function() {
 
 				if (e.which == 89 || e.which == 121) {
 
-					// $("#question").slideUp();
+					setUpGame();
 
 					startGame();
 				
@@ -299,7 +311,15 @@ $(document).ready(function() {
 				
 				else if (e.which == 78 || e.which == 110) {
 
-					alert('goodbye');
+					$("#question").css("display", "none");
+
+					setTimeout(function(){
+
+						$("#infoWindow").slideDown();
+
+						intro();
+
+					}, 2000);	
 
 				}
 
