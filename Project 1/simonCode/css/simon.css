@@ -21,6 +21,7 @@ h1 {
 
 h2 {
 	
+	display: none;
 	margin-top: 5px;
 	margin-right: 40px;
 	float: right;
@@ -37,7 +38,71 @@ body {
 
 }
 
+#infoWindow {
+	
+	display: none;
+	clear: both;
+	background-color: black;
+	height: 380px;
+	width: 380px;
+	margin: 20px auto;
+	border-radius: 200px 200px 200px 200px;
+	border: 20px solid black;
+
+}
+
+#content {
+
+	text-align: center;
+	color: red;
+	font-family: 'VT323';
+	font-size: 50px;
+
+}
+
+#message {
+
+	margin: 160px auto;	
+
+}
+
+#question {
+
+	display: none;
+	margin: 130px auto;	
+
+}
+
+#enterName {
+
+	display: none;
+	margin: 0px auto;	
+
+}
+
+#nameInput {
+
+	height: 100px;
+	width: 200px;
+	text-align: center;
+	color: red;
+	font-family: 'VT323';
+	font-size: 50px;
+	display: none;
+	margin: 10px auto;
+	border: none;
+	background-color: black;	
+
+}
+
+#nameInput:focus {
+  
+  outline: none;
+
+}
+
 #boxes {
+
 	clear: both;
 	margin: 0px auto;
 	text-align: center;

@@ -14,25 +14,75 @@ $(document).ready(function() {
 		var playerClickLog = [];
 		var playerClickNumber = 0;
 
+		var playerName;
+
 		var round = 1;
 
 		var faultSound = ["audio/faster.wav"];
 
-		//enterPlayerName();
+		intro();
 
-		colourGenerator();
+		function intro(){
+
+			$("#board").css("display", "none");
+			$("#infoWindow").slideDown();
+
+			enterPlayerName();	
+
+		}	
 
 		function enterPlayerName(){
 
-			var playerName =	prompt('What is your name?').toLowerCase();
+			$("#board").css("display", "none");
+			$("#infoWindow").slideDown();
 
-			displayPlayerName(playerName);
+			$("#enterName").text("please enter your name to start");
+			$("#enterName").slideDown();
+			$("#nameInput").slideDown();
+
+			$("#nameInput").focus();
+
+			$(document).keypress(function(e){
+
+				playerName = $("#nameInput").val();
+
+				if (e.which == 13) {
+
+					console.log(playerName);
+
+					displayPlayerName(playerName);
+
+					$("#infoWindow").css("display", "none");
+					
+					setTimeout(function(){
+
+						$("#board").css("display", "block");
+				
+					}, 1000);
+
+					startGame();
+
+				}	
+
+			})
+
+		};
+
+		function startGame() {
+
+			setTimeout(function(){
+
+  			colourGenerator();
+	  		
+	  	}, 2000);	
 
 		}
 
 		function displayPlayerName(name){
 
 			$("h2").text(name + ": 0");
+			$("h2").slideDown(name + ": 0");
+			// $("h2").show("slide", { direction: "left" }, 500);
 
 		}
 		
@@ -127,7 +177,7 @@ $(document).ready(function() {
 
 			} else {
 
-				$("h2").text("score: " + (round));
+				$("h2").text(playerName + ": " + (round));
 
 				round++;
 
@@ -162,7 +212,7 @@ $(document).ready(function() {
 					  		$("." + simonLog[i]).css("background-color", $("." + simonLog[i]).attr('value'));
 
 					  		}, 300);				  			
-						}, 1000 * i);
+						}, 500 * i);
 					}(i));
 			};		
 		}
@@ -209,15 +259,54 @@ $(document).ready(function() {
 
 		function endGame(){
 
-			console.log('endGame');
+			simonButton = "";
+			simonLog = [];
+			playerClick = "";
+			playerClickLog = [];
+			playerClickNumber = 0;
+			round = 1;
 
 			//wrongSound();
-			// $("body").append('<input type="button" class="unlucky" value="Unlucky!">');
+			//$("body").append('<input type="button" class="endGame" value="Unlucky!">');
 
-			alert('game over');
+			$("#board").css("display", "none");
+			$("#infoWindow").slideDown();
+			playAgain();
 
 		}
 
-	}
+		function playAgain(){
+
+			$("#message").text("whoops!");
+
+			setTimeout(function(){
+
+				$("#message").slideUp();
+				$("#question").text("do you want to play again (y/n)?");
+				$("#question").slideDown();
+
+			}, 2000);
+
+			$(document).keypress(function(e){
+
+				if (e.which == 89 || e.which == 121) {
+
+					// $("#question").slideUp();
+
+					startGame();
+				
+				}
+				
+				else if (e.which == 78 || e.which == 110) {
+
+					alert('goodbye');
+
+				}
+
+			})
+
+		}
+
+	}	
 
 });
