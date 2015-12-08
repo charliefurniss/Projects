@@ -13,17 +13,27 @@ $(document).ready(function() {
 		var playerClick;
 		var playerClickLog = [];
 
-		var numberOfButtons = 4;
-
 		var round = 1;
-
-		var buttonSounds = ["audio/after.wav", "audio/better.wav", "audio/do_it.wav", 
-		"audio/ever.wav"];
 
 		var faultSound = ["audio/faster.wav"];
 
+		//enterPlayerName();
+
 		colourGenerator();
 
+		function enterPlayerName(){
+
+			var playerName =	prompt('What is your name?').toLowerCase();
+
+			displayPlayerName(playerName);
+
+		}
+
+		function displayPlayerName(name){
+
+			$("h2").text(name + ": 0");
+
+		}
 		
 		function colourGenerator(){
 
@@ -54,8 +64,6 @@ $(document).ready(function() {
 
 			simonLog.push(simonButton.attr('class'));
 
-			console.log("simonLog = " + simonLog);
-
 			simonFlash();
 
 			//makeSound(simonButton.attr('url'));
@@ -75,11 +83,21 @@ $(document).ready(function() {
 
 			} else {
 
-			assessClickLog();
+				$("h2").text("score: " + (round));
+
+				round++;
+
+				playerClickLog.length = 0;
+
+				setTimeout(function(){
+
+					colourGenerator();
+
+				}, 1000);
 
 			}
 
-		};
+		}
 
 		function pClick(){
 
@@ -97,7 +115,7 @@ $(document).ready(function() {
 
 					playerClickLog.push(playerClick.attr('class'));
 
-					playerTurn();
+					assessEachClick();
 
 				})
 				
@@ -105,36 +123,61 @@ $(document).ready(function() {
 
 		};
 
-		function assessClickLog() {
+		function assessEachClick() {
+			
+			for (i = 0; i < playerClickLog.length; i++){
 
-			console.log('assessClickLog');
+				console.log(playerClickLog[i]);
 
-				var simonLogJoined = simonLog.join();
+				if (playerClickLog[i] == simonLog[i]){	
 
-				var playerClickJoined = playerClickLog.join();
+					playerTurn();
 
-				if (simonLogJoined == playerClickJoined) {
-					
-					$("h2").text("Score: " + (round));
+					} else {
 
-					round++;
+						// wrongSound();
+						// $("body").append('<input type="button" class="unlucky" value="Unlucky!">');
 
-					playerClickLog.length = 0;
+						alert('game over');
 
-					setTimeout(function(){
-
-						colourGenerator();
-
-					}, 1000);
-
-				} else {
-
-					//faultSound();
-					alert('Game over');
+					}	
 
 				}
 
-		}
+			}
+
+		// function assessClickLog() {
+
+		// 	var simonLogJoined = simonLog.join();
+
+		// 	var playerClickJoined = playerClickLog.join();
+
+		// 	console.log(simonLogJoined);
+
+		// 	console.log(playerClickJoined);
+
+		// 	if (simonLogJoined == playerClickJoined) {
+				
+		// 		$("h2").text("score: " + (round));
+
+		// 		round++;
+
+		// 		playerClickLog.length = 0;
+
+		// 		setTimeout(function(){
+
+		// 			colourGenerator();
+
+		// 		}, 1000);
+
+		// 	} else {
+
+		// 		wrongSound();
+		// 		$("body").append('<input type="button" class="unlucky" value="Unlucky!">');
+
+		// 	}
+
+		// }
 
 		function simonFlash(){		
 
@@ -161,15 +204,6 @@ $(document).ready(function() {
 		
 		}
 
-		function removeFlashClasses() {
-
-			$("#redButton").removeClass("redButtonFlash");
-			$("#blueButton").removeClass("blueButtonFlash");
-			$("#greenButton").removeClass("greenButtonFlash");
-			$("#yellowButton").removeClass("yellowButtonFlash");
-
-		}
-
 		function playerFlash(buttonClass){
 
 			$("." + buttonClass).css("background-color", $("." + buttonClass).attr('id'));
@@ -182,7 +216,7 @@ $(document).ready(function() {
 	
 		};
 
-		function faultSound(){
+		function wrongSound(){
 
 			eSound = soundManager.createSound({
 			        

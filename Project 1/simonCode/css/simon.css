@@ -1,24 +1,52 @@
 h1 {
 
-	
+	color: #03E003;
+	margin-top: 15px;
+	margin-left: 40px;
+	font-family: 'VT323';
+	font-size: 80px;
+	letter-spacing: 10px;
+	animation: textFlash 5s infinite;
+
+}
+
+@keyframes textFlash {
+
+    25%		{color: #FF0000;}
+    50%  	{color: #0070FF;}
+    75%  	{color: #03E003;}
+    100%  	{color: yellow;}
 
 }
 
 h2 {
-	margin: 0px;
+	
+	margin-top: 5px;
+	margin-right: 40px;
 	float: right;
+	font-family: 'VT323';
+	font-size: 80px;
+	letter-spacing: 10px;
+	color: #03E003;
+
+}
+
+body {
+
+	background-color: #312D2D;
 
 }
 
 #boxes {
-
+	clear: both;
 	margin: 0px auto;
 	text-align: center;
 	padding: 20px;
 
 }
 
-#board {
+/*#board {
+
 	clear: both;
 	background-color: blue;
 	height: 450px;
@@ -26,11 +54,18 @@ h2 {
 	display: block;
 	margin: 20px auto;
 
-}	
+}*/	
 
 input {
 
 	font-size: 0px;
+
+}
+
+table {
+
+	border: 1; 
+	width: 100%;
 
 }
 
