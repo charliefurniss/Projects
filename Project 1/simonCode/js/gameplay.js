@@ -64,9 +64,7 @@ $(document).ready(function() {
 
 			simonLog.push(simonButton.attr('class'));
 
-			simonFlash();
-
-			//makeSound(simonButton.attr('url'));
+			simonFlashSound();
 
 			pClick();
 
@@ -146,40 +144,7 @@ $(document).ready(function() {
 
 			}
 
-		// function assessClickLog() {
-
-		// 	var simonLogJoined = simonLog.join();
-
-		// 	var playerClickJoined = playerClickLog.join();
-
-		// 	console.log(simonLogJoined);
-
-		// 	console.log(playerClickJoined);
-
-		// 	if (simonLogJoined == playerClickJoined) {
-				
-		// 		$("h2").text("score: " + (round));
-
-		// 		round++;
-
-		// 		playerClickLog.length = 0;
-
-		// 		setTimeout(function(){
-
-		// 			colourGenerator();
-
-		// 		}, 1000);
-
-		// 	} else {
-
-		// 		wrongSound();
-		// 		$("body").append('<input type="button" class="unlucky" value="Unlucky!">');
-
-		// 	}
-
-		// }
-
-		function simonFlash(){		
+		function simonFlashSound(){		
 
 			for (i = 0; i < simonLog.length; i++) {
 
@@ -190,6 +155,8 @@ $(document).ready(function() {
 					  setTimeout(function(){
 					           
 					  		$("." + simonLog[i]).css("background-color", $("." + simonLog[i]).attr('id'));
+
+					  		makeSound($("." + simonLog[i]).attr('url'));
 
 					  		setTimeout(function(){
 
@@ -207,6 +174,8 @@ $(document).ready(function() {
 		function playerFlash(buttonClass){
 
 			$("." + buttonClass).css("background-color", $("." + buttonClass).attr('id'));
+
+			makeSound($("." + buttonClass).attr('url'));
 
 				setTimeout(function(){
 
@@ -229,6 +198,8 @@ $(document).ready(function() {
 		};
 
 		function makeSound(buttonURL){
+
+			//console.log(buttonURL);
 
 			mySound = soundManager.createSound({
 			        
