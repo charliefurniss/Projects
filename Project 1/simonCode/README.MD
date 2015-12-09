@@ -2,7 +2,7 @@ Simon game
 
 1. Description
 
-I built this game for a project in week 3 of General Assembly's Web Development Immersive course.
+I built this game for a project in week 3 of General Assembly's Web Development Immersive course. It is a memory game in which the player has to repeat an ever increasing series of visual/audio cues produced by the computer (Simon).
 
 The project requirements were:
 
