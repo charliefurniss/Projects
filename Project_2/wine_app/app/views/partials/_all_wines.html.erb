@@ -1,0 +1,33 @@
+<h5>all wines</h5>
+
+<% @wines.each do |wine| %>
+	
+<% full_name = "#{wine.producer} #{wine.name} #{wine.vintage}"	%>
+	
+<div class="row">
+	
+	<div class="large-12 medium-12 small-12 columns">
+
+		<table>
+			<!-- <tr>
+				<th>Producer</th>
+				<th>Name</th>
+				<th>Producer</th>
+				<th>Name</th>
+				<th>Producer</th>
+				<th>Name</th>
+			</tr> -->
+
+			<tr>
+				<td><%= image_tag("http://akamai.bbr.com/images/products/25601.jpg", size: "80x50") %></td>
+				<td><%= link_to full_name, wine %></td>
+				<td>quantity</td>
+				<td><%= link_to 'notes' %></td>
+			</tr>
+		</table>
+
+	</div>
+
+</div>
+
+<% end %>
