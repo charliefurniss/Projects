@@ -1,5 +1,7 @@
 class WinesController < ApplicationController
+  before_action :set_country, only: [:show, :edit, :update, :destroy]
   def index
+    @wines = Wine.all
   end
 
   def show
@@ -19,4 +21,13 @@ class WinesController < ApplicationController
 
   def destroy
   end
+
+  private
+    def set_wine
+      @wine = Wine.find(params[:id])
+    end
+
+    def wine_params
+      params.require(:wine).permit(:producer, :name, :vintage, :region, :country, :grape, :maturity)
+    end
 end
