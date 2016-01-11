@@ -15,3 +15,25 @@
  *= require foundation_and_overrides
 
  */
+
+.wineDetails {
+
+	float: right;
+	border: black 1px solid;
+	padding: 5px;
+
+}
+
+.showImage {
+
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.notesArea {
+
+	margin-top: 10px;
+	padding: 20px;
+	background-color: orange;
+
+}

@@ -1,4 +1,57 @@
 <h1>show one wine</h1>
 
-<h3><%= wine.name %></h3>
+<%= link_to 'back to wines', wines_path %>
+
+<div class="row">
+	
+
+	<div class="large-3 medium-6 small-12 columns">
+		<img class="showImage" src="http://akamai.bbr.com/images/products/25601.jpg"/>
+	</div>
+	
+	<div class="large-9 medium-6 small-12 columns">
+		<div class="wineDetails"><h3><%= @wine.producer %></h3><h3><%= @wine_details %></h3>
+			<p><a><%= @wine.region %></a>
+				
+				 |
+		
+			<a><%= @wine.country %></a>
+
+			
+			|
+			
+			<a><%= @wine.grape %></a>
+				
+				 |
+		
+			<a><%= @wine.maturity %></a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<%= link_to 'drink wine'%>
+
+<div class="notesArea">
+
+	<% @notes.each do |note| %>
+		
+	<div class="row">
+		<div class="large-12 medium-12 small-12 columns">
+			<table>				
+				<tr>
+					<td><%= localize(note.created_at, :format => :uk) %></td>					
+					<td><%= note.copy %></td>
+					<td><%= note.rating %></td>
+					<td><%= link_to 'edit' %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<% end %>
+</div>
+
+
+
 
