@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  producer: MyString
+  name: MyString
+  vintage: 1
+  region: MyString
+  country: MyString
+  grape: MyText
+  maturity: MyString
+
+two:
+  producer: MyString
+  name: MyString
+  vintage: 1
+  region: MyString
+  country: MyString
+  grape: MyText
+  maturity: MyString
