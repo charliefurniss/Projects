@@ -1,8 +1,13 @@
 class UserNotesController < ApplicationController
+    before_action :set_note, only: [:show, :edit, :update, :destroy]
   def index
+    @notes = current_user.notes
   end
 
   def show
+
+    @wine = @note.bottle.wine
+    
   end
 
   def new
@@ -19,4 +24,13 @@ class UserNotesController < ApplicationController
 
   def destroy
   end
+
+  private
+    def set_note
+      @note = Note.find(params[:id])
+    end
+
+    def note_params
+      params.require(:note).permit(:appearance, :nose, :palate, :conclusion, :rating, :created_at, :maturity)
+    end
 end

@@ -2,7 +2,6 @@ class UserWinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
   def index
     @wines = current_user.wines
-    # @link = "user_wine"
   end
 
   def show

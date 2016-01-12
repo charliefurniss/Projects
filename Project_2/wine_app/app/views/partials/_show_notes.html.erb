@@ -1,15 +1,25 @@
-<h5>Notes</h5>
-
 <% @notes.each do |note| %>
+
+<% full_name = "#{note.bottle.wine.producer} #{note.bottle.wine.name} #{note.bottle.wine.vintage}"	%>
 	
 <div class="row">
 	<div class="large-12 medium-12 small-12 columns">
 		<table>				
 			<tr>
-				<td><%= localize(note.created_at, :format => :uk) %></td>					
-				<td><%= link_to note.conclusion, note %></td>
+				<td><%= localize(note.created_at, :format => :uk) %></td>
+				<td><%= image_tag("http://akamai.bbr.com/images/products/25601.jpg", size: "50x30") %></td>
+				<td><%= full_name %></td>
+				<% if controller_name == "user_notes" %>
+
+					<td><%= link_to note.conclusion, user_note_path(note) %></td>
+
+				<% elsif controller_name == "notes" %>
+
+					<td><%= link_to full_name, note %></td>
+
+				<% end %>					
+				
 				<td><%= note.rating %></td>
-				<td><%= link_to 'edit' %></td>
 			</tr>
 		</table>
 	</div>
