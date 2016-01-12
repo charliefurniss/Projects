@@ -1,0 +1,23 @@
+<h1>Log in</h1>
+
+<form action="/sessions" method="post">
+	
+	<div class="field">
+		<label for = "email">name</label>
+		<input type="text" name="email"/>
+	</div>
+
+	<div class="field">
+		<label for = "password">password</label>
+		<input type="password" name="password"/>
+	</div>
+
+	<br>
+
+	<div class="actions">
+		<input type="submit" value="login"/>
+	</div>
+
+	<%= token_tag %>
+
+</form

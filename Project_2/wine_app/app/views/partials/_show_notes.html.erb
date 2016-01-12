@@ -1,21 +1,18 @@
-<div class="notesArea">
+<h5>Notes</h5>
 
-	<h5>Notes</h5>
-
-	<% @notes.each do |note| %>
-		
-	<div class="row">
-		<div class="large-12 medium-12 small-12 columns">
-			<table>				
-				<tr>
-					<td><%= localize(note.created_at, :format => :uk) %></td>					
-					<td><%= note.copy %></td>
-					<td><%= note.rating %></td>
-					<td><%= link_to 'edit' %></td>
-				</tr>
-			</table>
-		</div>
+<% @notes.each do |note| %>
+	
+<div class="row">
+	<div class="large-12 medium-12 small-12 columns">
+		<table>				
+			<tr>
+				<td><%= localize(note.created_at, :format => :uk) %></td>					
+				<td><%= note.copy %></td>
+				<td><%= note.rating %></td>
+				<td><%= link_to 'edit' %></td>
+			</tr>
+		</table>
 	</div>
-
-	<% end %>
 </div>
+
+<% end %>
