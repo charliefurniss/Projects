@@ -1,10 +1,16 @@
 class NotesController < ApplicationController
-	before_action :set_wine, only: [:show]
+	before_action :set_note, only: [:show]
   def index
   	@notes = Note.all
   end
 
   def show
+  	#show a single note and its respective wine
+
+  	#get wine
+
+  	@wine = @note.bottle.wine
+
   end
 
   private
@@ -13,6 +19,6 @@ class NotesController < ApplicationController
     end
 
     def note_params
-      params.require(:note).permit(:copy, :rating, :created_at)
+      params.require(:note).permit(:appearance, :nose, :palate, :conclusion, :rating, :created_at, :maturity)
     end
 end

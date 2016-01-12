@@ -1,7 +1,7 @@
-class WinesController < ApplicationController
+class UserWinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
   def index
-    @wines = Wine.all
+    @wines = current_user.wines
   end
 
   def show
@@ -12,9 +12,24 @@ class WinesController < ApplicationController
 
   end
 
+  def new
+  end
+
+  def create
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
   private
     def set_wine
-      @wine = Wine.find(params[:id])
+      @wine = current_user.wines(params[:id])
     end
 
     def wine_params

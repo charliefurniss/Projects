@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :user_wines
+
+  resources :user_notes
+
   resources :sessions, only: [:new, :create]
 
   delete "/sessions" , to: "sessions#destroy"

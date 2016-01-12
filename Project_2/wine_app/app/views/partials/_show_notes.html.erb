@@ -7,7 +7,7 @@
 		<table>				
 			<tr>
 				<td><%= localize(note.created_at, :format => :uk) %></td>					
-				<td><%= note.copy %></td>
+				<td><%= link_to note.conclusion, note %></td>
 				<td><%= note.rating %></td>
 				<td><%= link_to 'edit' %></td>
 			</tr>

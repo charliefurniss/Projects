@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    
+
     if logged_in?
 
       redirect_to root_path
@@ -36,6 +36,7 @@ class UsersController < ApplicationController
       render "new"
 
     end
+    
   end
 
   private
