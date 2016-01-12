@@ -1,8 +1,9 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
   def index
+
     @wines = Wine.all
-    # @link = "wine"
+
   end
 
   def show
@@ -39,7 +40,7 @@ class WinesController < ApplicationController
             
       end
 
-      redirect_to action: 'index'
+      redirect_to action: @users_wine
 
     else
       # shows the user the completed form again
