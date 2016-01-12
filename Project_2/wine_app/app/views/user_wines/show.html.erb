@@ -1,2 +1,13 @@
-<h1>UserWines#show</h1>
-<p>Find me in app/views/user_wines/show.html.erb</p>
+<div class="backLink">	
+	<%= link_to 'back to wines', user_wines_path %>
+</div>
+
+<%= render "/partials/show_wine" %>
+
+<%= link_to 'drink wine'%>
+
+<div class="notesArea">
+
+	<%= render "/partials/show_notes" %>
+
+</div>

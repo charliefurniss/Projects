@@ -1,2 +1,7 @@
-<h1>UserNotes#show</h1>
-<p>Find me in app/views/user_notes/show.html.erb</p>
+<%= render "/partials/notes_subnav" %>
+
+<div class="backLink">	
+	<%= link_to 'back to notes', user_notes_path %>
+</div>
+
+<%= render "/partials/show_note" %>

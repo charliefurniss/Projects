@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   		session[:user_id] = user.id
 
   		#this tells you that you have logged in successfully, not that you are already logged in
-  		redirect_to root_path, notice: "logged in"
+  		redirect_to user_wines_path, notice: "logged in"
 
   	else
 

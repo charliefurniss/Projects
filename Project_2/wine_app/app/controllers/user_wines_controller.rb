@@ -2,13 +2,14 @@ class UserWinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
   def index
     @wines = current_user.wines
+    # @link = "user_wine"
   end
 
   def show
     
     @wine_details = "#{@wine.name} #{@wine.vintage}"
 
-    @notes = @wine.notes
+    @notes = Note.where("bottle_id = #{@wine.id}")
 
   end
 
@@ -29,7 +30,7 @@ class UserWinesController < ApplicationController
 
   private
     def set_wine
-      @wine = current_user.wines(params[:id])
+      @wine = current_user.wines.find(params[:id])
     end
 
     def wine_params
