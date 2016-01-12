@@ -1,5 +1,5 @@
 class UserWinesController < ApplicationController
-  before_action :set_wine, only: [:show, :edit, :update, :destroy]
+  before_action :set_wine, only: [:show]
   def index
     @wines = current_user.wines
   end
@@ -10,21 +10,6 @@ class UserWinesController < ApplicationController
 
     @notes = Note.where("bottle_id = #{@wine.id}")
 
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

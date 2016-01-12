@@ -1,0 +1,67 @@
+<h5>Add wine</h5>
+
+<%= form_for(@wine) do |f| %>
+
+	    <div class="field">
+	    	<%= f.label :producer%>
+	    	<%= f.text_field :producer %>
+	    </div>
+
+	    <div class="field">
+	    	<%= f.label :name %>
+	    	<%= f.text_field :name %>
+	    </div>
+
+	    <div class="field">
+	    	<%= f.label :vintage %>
+	    	<%= f.text_field :vintage %>
+	    </div>
+
+	    <div class="field">
+	    	<%= f.label :region %>
+	    	<%= f.text_field :region %>
+	    </div>
+
+	    <div class="field">
+	    	<%= f.label :country %>
+	    	<%= f.text_field :country %>
+	    </div>
+
+	    <div class="field">
+	    	<%= f.label :grape %>
+	    	<%= f.text_field :grape %>
+	    </div>
+
+
+	    <div class="field">
+	    	<%= f.label :alcohol %>
+	    	<%= f.text_field :alcohol %>
+	    </div>
+
+	    <div class="field">
+	    	<%= f.label :window , "Drinking window" %>
+	    	<%= f.text_field :window %>
+	    </div>
+
+	    <div class="field">
+	    	<%= label_tag 'vendor' %>
+	    	<%= text_field_tag 'vendor' %>
+	    </div>
+
+	    <div class="field">
+	    	<%= label_tag 'price' %>
+	    	<%= text_field_tag 'price' %>
+	    </div>
+
+	    <div class="field">
+	    	<%= label_tag 'quantity' %>
+	    	<%= text_field_tag 'bottle[quantity]' %>
+	    </div>
+
+	    <div class="actions">
+	      <%= f.submit "Add wine" %>
+	    </div>
+
+	<%= token_tag %>
+
+<% end %>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :user_wines
+  resources :user_wines , only: [:index, :show]
 
   resources :user_notes
 
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users , only: [:new , :index, :create]
 
-  resources :wines, only: [:index, :show]
+  resources :wines
 
   root 'users#index'
 
