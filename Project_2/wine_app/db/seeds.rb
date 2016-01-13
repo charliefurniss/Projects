@@ -13,10 +13,10 @@ w1 = Wine.create!(style: "red", producer: "Domaine Alain Michelot", name: "Nuits
 w2 = Wine.create!(style: "red", producer: "Domaine Gachot-Monot", name: "Nuits St Georges", vintage: 2009, alcohol: 13, region: "Burgundy", country: "France", grape: "Pinot Noir", window_start: 2015, window_end: 2020)
 w3 = Wine.create!(style: "red", producer: "Domaine Pierre Gaillard", name: "Cote-Rotie", vintage: 2010, alcohol: 13.5, region: "Rhone", country: "France", grape: "Syrah", window_start: 2020, window_end: 2030)
 
-b1 = Bottle.create!(wine_id: w1.id, user_id: u1.id, vendor: "producer", price: 25)
-b2 = Bottle.create!(wine_id: w1.id, user_id: u2.id, vendor: "producer", price: 25)
-b3 = Bottle.create!(wine_id: w3.id, user_id: u1.id, vendor: "producer", price: 30)
-b4 = Bottle.create!(wine_id: w2.id, user_id: u2.id, vendor: "producer", price: 30)
+b1 = Bottle.create!(wine_id: w1.id, user_id: u1.id, vendor: "producer", price: 25, drunk: false)
+b2 = Bottle.create!(wine_id: w1.id, user_id: u2.id, vendor: "producer", price: 25, drunk: false)
+b3 = Bottle.create!(wine_id: w3.id, user_id: u1.id, vendor: "producer", price: 30, drunk: false)
+b4 = Bottle.create!(wine_id: w2.id, user_id: u2.id, vendor: "producer", price: 30, drunk: false)
 
 n1 = Note.create!(bottle_id: b1.id, appearance: "clear", nose: "apples", palate: "pears", conclusion: "Yummy", rating: 8, maturity: "Can drink now, but will improve")
 n2 = Note.create!(bottle_id: b2.id, appearance: "clear", nose: "cherries", palate: "plums", conclusion: "Delicous", rating: 7, maturity: "Ready")

@@ -13,7 +13,7 @@ class UserWinesController < ApplicationController
 
     @note = Note.new
 
-    @bottles = @wine.bottles
+    @bottles = @wine.bottles.where("drunk = false")
 
     @quantity = @bottles.count
   
