@@ -29,7 +29,9 @@ class NotesController < ApplicationController
 
   def wine_note_new
 
-    bottle = Bottle.find(params[:id])
+    bottle = Bottle.where(:wine_id => params[:id] , :user => current_user).not(:drunk => 1).first
+
+    bottle.drunk = 1
 
     bottle.notes.create(note_params)
 
@@ -45,6 +47,6 @@ class NotesController < ApplicationController
     end
 
     def note_params
-      params.require(:note).permit(:bottle_id, :appearance, :nose, :palate, :conclusion, :rating, :created_at, :maturity)
+      params.require(:note).permit(:appearance, :nose, :palate, :conclusion, :rating, :created_at, :maturity)
     end
 end

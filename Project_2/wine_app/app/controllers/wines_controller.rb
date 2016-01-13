@@ -52,11 +52,6 @@ class WinesController < ApplicationController
     
   end
 
-  def destroy
-
-    redirect_to user_wines_path
-  end
-
   private
     def set_wine
       @wine = Wine.find(params[:id])

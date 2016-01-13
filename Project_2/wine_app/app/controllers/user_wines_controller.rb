@@ -12,7 +12,17 @@ class UserWinesController < ApplicationController
     @notes = Note.where("bottle_id = #{@wine.id}")
 
     @note = Note.new
+
+    @bottles = @wine.bottles
+
+    @quantity = @bottles.count
   
+  end
+
+  def drink_wine
+
+    
+
   end
 
   private
