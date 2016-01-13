@@ -2,11 +2,16 @@ class UserNotesController < ApplicationController
     before_action :set_note, only: [:show, :edit, :update, :destroy]
   def index
     @notes = current_user.notes
+
+    @title = "Your notes"
+
   end
 
   def show
 
     @wine = @note.bottle.wine
+
+    @wine_details = "#{@wine.name} #{@wine.vintage}"
     
   end
 

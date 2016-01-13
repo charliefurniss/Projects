@@ -2,14 +2,17 @@ class UserWinesController < ApplicationController
   before_action :set_wine, only: [:show]
   def index
     @wines = current_user.wines
+
+    @title = "Your wines"
+
   end
 
   def show
     
-    @wine_details = "#{@wine.name} #{@wine.vintage}"
-
     @notes = Note.where("bottle_id = #{@wine.id}")
 
+    @note = Note.new
+  
   end
 
   private

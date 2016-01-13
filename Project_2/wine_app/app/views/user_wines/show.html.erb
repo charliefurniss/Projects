@@ -1,4 +1,5 @@
-<%= render "/partials/user_wines_subnav" %>
+<!-- this links to specific js file --> 
+<% javascript_include_tag "/javascripts/user_wines_show/user_wines.js" %>
 
 <div class="backLink">	
 	<%= link_to 'back to wines', user_wines_path %>
@@ -6,9 +7,15 @@
 
 <%= render "/partials/show_wine" %>
 
-<%= link_to 'drink wine'%>
+<button id='addNoteButton'>Add note</button>
 
 <div class="notesArea">
+
+	<div id="newNoteForm">
+
+	<%= render "/partials/new_note_form" %>
+
+	</div>
 
 	<%= render "/partials/show_notes" %>
 

@@ -16,6 +16,34 @@
 
  */
 
+table, .wineForm {
+
+	margin: 0 auto;
+	margin-top: 20px;
+
+}
+
+#newNoteForm {
+
+	display: none;
+
+}
+
+.active {
+
+	border-bottom-width: 3px;
+	border-bottom-color: blue;
+
+}
+
+.field {
+
+	max-width: 300px;
+	display: inline-block;
+	margin: 0 auto;
+
+}
+
 .wineName {
 
 	font-size: 33px;
@@ -27,6 +55,12 @@
 	float: right;
 	border: black 1px solid;
 	padding: 5px;
+
+}
+
+.quantity, .window, .rating {
+
+	text-align: center;
 
 }
 
@@ -50,3 +84,4 @@
 	margin: 5px;
 
 }
+

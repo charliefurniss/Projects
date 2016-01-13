@@ -7,7 +7,7 @@
 	<div class="large-9 medium-9 small-12 columns">
 		<div class="wineDetails">
 			<h3 class="wineName"><%= @wine.producer %></h3>
-			<h3 class="wineName"><%= @wine_details %></h3>
+			<h3 class="wineName"><%= "#{@wine.name} #{@wine.vintage}" %></h3>
 			<p><a><%= @wine.alcohol %>%</a>
 				
 				 |
@@ -17,7 +17,6 @@
 				 |
 		
 			<a><%= @wine.country %></a>
-
 			
 			|
 			

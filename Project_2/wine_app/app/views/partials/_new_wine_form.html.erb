@@ -1,6 +1,8 @@
 <h5>Add wine</h5>
 
-<%= form_for(@wine) do |f| %>
+<table>
+	<div class="large-3 medium-12 small-12 columns">
+		<%= form_for(@wine) do |f| %>
 
 	    <div class="field">
 	    	<%= f.label :producer%>
@@ -49,7 +51,7 @@
 	    </div>
 
 	    <div class="field">
-	    	<%= label_tag 'price' %>
+	    	<%= label_tag 'price (£)' %>
 	    	<%= text_field_tag 'price' %>
 	    </div>
 
@@ -62,6 +64,8 @@
 	      <%= f.submit "Add wine" %>
 	    </div>
 
-	<%= token_tag %>
+			<%= token_tag %>
 
-<% end %>
+		<% end %>
+	</div>
+</table>	

@@ -4,6 +4,8 @@ class WinesController < ApplicationController
 
     @wines = Wine.all
 
+    @title = "CellarBook wines"
+
   end
 
   def show
@@ -48,6 +50,11 @@ class WinesController < ApplicationController
 
     end
     
+  end
+
+  def destroy
+
+    redirect_to user_wines_path
   end
 
   private
