@@ -9,9 +9,9 @@
 u1 = User.create!(name: "charlie", email: "charlie@charlie.com", password: "12345", password_confirmation: "12345")
 u2 = User.create!(name: "rhoda", email: "rhoda@rhoda.com", password: "12345", password_confirmation: "12345")
 
-w1 = Wine.create!(producer: "Domaine Alain Michelot", name: "Nuits St Georges Vielles Vignes", vintage: 2010, alcohol: 13.5, region: "Burgundy", country: "France", grape: "Pinot Noir", window: 2017)
-w2 = Wine.create!(producer: "Domaine Gachot-Monot", name: "Nuits St Georges", vintage: 2009, alcohol: 13, region: "Burgundy", country: "France", grape: "Pinot Noir", window: 2017)
-w3 = Wine.create!(producer: "Domaine Pierre Gaillard", name: "Cote-Rotie", vintage: 2010, alcohol: 13.5, region: "Rhone", country: "France", grape: "Syrah", window: 2017)
+w1 = Wine.create!(style: "red", producer: "Domaine Alain Michelot", name: "Nuits St Georges Vielles Vignes", vintage: 2010, alcohol: 13.5, region: "Burgundy", country: "France", grape: "Pinot Noir", window_start: 2012, window_end: 2018)
+w2 = Wine.create!(style: "red", producer: "Domaine Gachot-Monot", name: "Nuits St Georges", vintage: 2009, alcohol: 13, region: "Burgundy", country: "France", grape: "Pinot Noir", window_start: 2015, window_end: 2020)
+w3 = Wine.create!(style: "red", producer: "Domaine Pierre Gaillard", name: "Cote-Rotie", vintage: 2010, alcohol: 13.5, region: "Rhone", country: "France", grape: "Syrah", window_start: 2020, window_end: 2030)
 
 b1 = Bottle.create!(wine_id: w1.id, user_id: u1.id, vendor: "producer", price: 25)
 b2 = Bottle.create!(wine_id: w1.id, user_id: u2.id, vendor: "producer", price: 25)
