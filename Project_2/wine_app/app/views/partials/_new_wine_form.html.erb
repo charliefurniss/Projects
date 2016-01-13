@@ -5,7 +5,12 @@
 		<%= form_for(@wine) do |f| %>
 
 	    <div class="field">
-	    	<%= f.label :producer%>
+	    	<%= f.label :style %>
+	    	<%= f.select :style , ['sparkling', 'white' , 'rosé' , 'red' , 'sweet'] %>
+	    </div>
+
+	    <div class="field">
+	    	<%= f.label :producer %>
 	    	<%= f.text_field :producer %>
 	    </div>
 
@@ -41,8 +46,13 @@
 	    </div>
 
 	    <div class="field">
-	    	<%= f.label :window , "Drinking window" %>
-	    	<%= f.text_field :window %>
+	    	<%= f.label :window_start , "Drinking start date" %>
+	    	<%= f.text_field :window_start %>
+	    </div>
+
+	    <div class="field">
+	    	<%= f.label :window_end , "Drinking end date" %>
+	    	<%= f.text_field :window_end %>
 	    </div>
 
 	    <div class="field">

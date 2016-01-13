@@ -16,6 +16,8 @@ class NotesController < ApplicationController
 
   def new
 
+    @star = '<i class="fa fa-star">'
+
     @note = Note.new
 
   end
@@ -29,9 +31,13 @@ class NotesController < ApplicationController
 
   def wine_note_new
 
-    bottle = Bottle.where(:wine_id => params[:id] , :user => current_user).not(:drunk => 1).first
+    bottles = Bottle.where(:wine_id => params[:id] , :user => current_user, :drunk => false)
 
-    bottle.drunk = 1
+    bottle = bottles.first
+
+    bottle.drunk = true
+
+    bottle.save
 
     bottle.notes.create(note_params)
 

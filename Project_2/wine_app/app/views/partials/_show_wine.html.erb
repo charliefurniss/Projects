@@ -8,7 +8,11 @@
 		<div class="wineDetails">
 			<h3 class="wineName"><%= @wine.producer %></h3>
 			<h3 class="wineName"><%= "#{@wine.name} #{@wine.vintage}" %></h3>
-			<p><a><%= @wine.alcohol %>%</a>
+			<p><a><%= @wine.style %></a>
+				
+				 |
+			
+			<a><%= @wine.alcohol %>%</a>
 				
 				 |
 		
@@ -28,10 +32,8 @@
 			</p>
 		</div>
 	</div>
+	<div class="wineUsers">
 </div>
-
-
-
 
 
 

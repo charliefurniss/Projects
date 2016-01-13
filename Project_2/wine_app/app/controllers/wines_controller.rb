@@ -14,6 +14,8 @@ class WinesController < ApplicationController
 
     @notes = @wine.notes
 
+    @users = @wine.users
+
   end
 
   def new
@@ -58,7 +60,7 @@ class WinesController < ApplicationController
     end
 
     def wine_params
-      params.require(:wine).permit(:producer, :name, :vintage, :alcohol, :region, :country, :grape, :window)
+      params.require(:wine).permit(:producer, :name, :vintage, :alcohol, :region, :country, :grape, :window_start, :window_end, :style)
     end
 
     def bottle_params

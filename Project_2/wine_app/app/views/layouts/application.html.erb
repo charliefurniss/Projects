@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,81 +13,86 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+<div class="row" id="content">
 
-   <div class="contain-to-grid sticky">   
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="/">CellarBook</a></h1>
-        </li>
-         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
+  <div class="small-10 small-offset-1 columns">
+    <body>
 
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <li class="has-form">
-            <div class="row collapse">
-              <div class="large-8 small-9 columns">
-                <input type="text" placeholder="eg, wine, region, user">
-              </div>
-              <div class="large-4 small-3 columns">
-                <a href="#" class="alert button expand">Search</a>
-              </div>
-            </div>
+     <div class="contain-to-grid sticky">   
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="/">CellarBook</a></h1>
           </li>
-          <li>
-            <a><%= link_to 'Add wine', new_wine_path %></a>
-          </li>
-
-          <% if current_user %>
-            <ul class="right">
-              <li class="active"><%= link_to 'Log out' , sessions_path , method: :delete, data: {confirm: 'Are you sure?'} %></li>
-            </ul>
-          <% else %>           
-            <ul class="left">
-              <li><a href="/sessions/new">Sign in</a></li>
-            </ul>
-            <ul class="right">
-              <li class="active"><a href="/users/new">Sign up</a></li>
-            </ul>
-          <% end %>  
+           <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
         </ul>
 
-        <!-- Left Nav Section -->
-        <ul class="left">
-          <li><a href="/wines">Wines</a></li>
-          <li><a href="/notes">Notes</a></li>
-        </ul>
-      </section>
-    </nav>
-   </div> 
+        <section class="top-bar-section">
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <li class="has-form">
+              <div class="row collapse">
+                <div class="large-8 small-9 columns">
+                  <input type="text" placeholder="eg, wine, region, user">
+                </div>
+                <div class="large-4 small-3 columns">
+                  <a href="#" class="alert button expand">Search</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a><%= link_to 'Add wine', new_wine_path %></a>
+            </li>
 
-   <% if current_user %>
+            <% if current_user %>
+              <ul class="right">
+                <li class="active"><%= link_to 'Log out' , sessions_path , method: :delete, data: {confirm: 'Are you sure?'} %></li>
+              </ul>
+            <% else %>           
+              <ul class="left">
+                <li><a href="/sessions/new">Sign in</a></li>
+              </ul>
+              <ul class="right">
+                <li class="active"><a href="/users/new">Sign up</a></li>
+              </ul>
+            <% end %>  
+          </ul>
 
-      <% if controller_name == "user_wines" %>
-        
-        <%= render "/partials/user_wines_subnav" %>
+          <!-- Left Nav Section -->
+          <ul class="left">
+            <li><a href="/wines">Wines</a></li>
+            <li><a href="/notes">Notes</a></li>
+          </ul>
+        </section>
+      </nav>
+     </div> 
 
-      <% elsif controller_name == "user_notes" %>
+     <% if current_user %>
 
-        <%= render "/partials/user_notes_subnav" %> 
+        <% if controller_name == "user_wines" %>
+          
+          <%= render "/partials/user_wines_subnav" %>
 
-      <% else %>
+        <% elsif controller_name == "user_notes" %>
 
-        <%= render "/partials/unmarked_subnav" %>   
+          <%= render "/partials/user_notes_subnav" %> 
 
-      <% end %>
+        <% else %>
 
-   <% end %>
+          <%= render "/partials/unmarked_subnav" %>   
 
-  <div class="small-12 large-12 medium-12 columns">
-    <h5><%= @title %></h5>
-  </div> 
+        <% end %>
 
-  <%= yield %>
-   
-  </body>
+     <% end %>
+
+    <div class="small-12 large-12 medium-12 columns">
+      <h5><%= @title %></h5>
+    </div> 
+
+    <%= yield %>
+     
+    </body>
+   </div>
+  </div>  
 </html>

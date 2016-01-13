@@ -24,17 +24,12 @@
 
 	    <div class="field">
 	    	<%= f.label :maturity %>
-	    	<%= f.text_field :maturity %>
+	    	<%= f.select :rating , ['Too young', 'Can drink now, will improve' , 'Drink now' , 'Too old'] %>
 	    </div>
 
 	    <div class="field">
 	    	<%= f.label :rating %>
-	    	<%= f.text_field :rating %>
-	    </div>
-
-	    <div class="field">
-	    	<%= label_tag 'quantity drunk' %>
-	    	<%= text_field_tag 'bottle[quantity]' %>
+	    	<%= f.select :rating , ['1', '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9' , '10'] %>
 	    </div>
 
 	    <div class="actions">

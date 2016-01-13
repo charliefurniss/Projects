@@ -23,6 +23,12 @@ table, .wineForm {
 
 }
 
+.sub-nav li {
+
+	margin-left: 0px;
+
+}
+
 #newNoteForm {
 
 	display: none;
@@ -58,7 +64,7 @@ table, .wineForm {
 
 }
 
-.quantity, .window, .rating {
+.quantity, .window {
 
 	text-align: center;
 

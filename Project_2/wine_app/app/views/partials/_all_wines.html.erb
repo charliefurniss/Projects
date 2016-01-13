@@ -4,7 +4,7 @@
 			<thead>
 			    <tr>
 			    	<th width="50">Colour</th>
-		      	<th width="150">Name</th>
+		      	<th width="150">Name</i> </th>
 		      	<th width="100">Region</th>
 		      	<th width="100">Country</th>
 		      	<th width="100">Drinking window</th>
@@ -15,7 +15,7 @@
 			<tbody>
 			<% @wines.each do |wine| %>	
 			<% full_name = "#{wine.producer} #{wine.name} #{wine.vintage}"	%>
-			<% quantity = wine.bottles.count %>
+			<% quantity = wine.bottles.where(:user => current_user, :drunk => false).count %>
 				<tr>
 					<td><%= image_tag("http://akamai.bbr.com/images/products/25601.jpg", size: "50x30") %></td>
 					<td>
@@ -31,7 +31,7 @@
 					</td>
 					<td><%= wine.region %></td>
 					<td><%= wine.country %></td>
-					<td class="window"><%= wine.window %></td>
+					<td class="window"><%= "#{wine.window_start}–#{wine.window_end}" %></td>
 					<td class="quantity"><%= quantity %></td>
 				</tr>
 			<% end %>		

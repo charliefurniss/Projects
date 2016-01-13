@@ -7,7 +7,11 @@
 
 <%= render "/partials/show_wine" %>
 
-<button id='addNoteButton'>Add note</button>
+<% if @quantity > 0 %>
+
+	<button id='addNoteButton'>Add note</button>
+
+<% end %>	
 
 <h5>To drink: <%= @quantity %></h5>
 
@@ -15,7 +19,7 @@
 
 	<div id="newNoteForm">
 
-	<%= render "/partials/new_note_form" %>
+		<%= render "/partials/new_note_form" %>
 
 	</div>
 

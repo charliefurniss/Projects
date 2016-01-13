@@ -3,10 +3,11 @@
 		<table>
 			<thead>
 			    <tr>
-			    	<th width="40">Date</th>
+			    <th width="30">Date</th>
+			    <th width="30">User</th>
 		      	<th width="150">Name</th>
 		      	<th width="100">Note</th>
-		      	<th width="50">Rating</th>
+		      	<th width="150">Rating</th>
 			    </tr>
 			</thead>
 
@@ -15,13 +16,34 @@
 				<% @notes.each do |note| %>
 
 				<% full_name = "#{note.bottle.wine.producer} #{note.bottle.wine.name} #{note.bottle.wine.vintage}"	%>
+
+				<% rating = note.rating %>
 										
-							<tr>
-								<td><%= localize(note.created_at, :format => :uk) %></td>
-								<td><%= full_name %></td>
-								<td><%= link_to truncate(note.conclusion, :length => 5), note %></td>
-								<td class="rating"><%= note.rating %></td>
-							</tr>
+					<tr>
+						<td><%= localize(note.created_at, :format => :uk) %></td>
+						<td><%= note.bottle.user.name %></td>
+						<td><%= full_name %></td>
+						
+						<% if controller_name == "user_notes" %>
+
+							<td><%= link_to truncate(note.conclusion, :length => 5), user_note_path(note) %></td>
+
+						<% elsif controller_name == "notes" %>
+
+							<td><%= link_to truncate(note.conclusion, :length => 5), note %></td>
+
+						<% end %>
+
+
+
+
+
+						<td class="rating">
+							<% (1..rating).each do |i| %>
+							  <i class="fa fa-star-o"></i>
+							<% end %>
+						</td>
+					</tr>
 				<% end %>
 			</tbody>
 		</table>	

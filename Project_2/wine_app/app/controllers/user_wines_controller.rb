@@ -13,9 +13,11 @@ class UserWinesController < ApplicationController
 
     @note = Note.new
 
-    @bottles = @wine.bottles.where("drunk = false")
+    @bottles = @wine.bottles.where(:user => current_user, :drunk => false)
 
     @quantity = @bottles.count
+
+    @users = @wine.users
   
   end
 

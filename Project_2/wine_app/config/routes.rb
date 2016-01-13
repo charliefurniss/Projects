@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'homepages/index'
+
   resources :user_wines , only: [:index, :show]
 
   resources :user_notes , only: [:index, :show]
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :notes
 
-  resources :users , only: [:new , :index, :create]
+  resources :users , only: [:new , :index, :show, :create]
 
   resources :wines
 
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
 
   post "/notes/:id/wine_note_new", to: "notes#wine_note_new"
 
-  root 'users#index'
+  root 'homepages#index'
 
   
 end

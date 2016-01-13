@@ -18,8 +18,8 @@ b2 = Bottle.create!(wine_id: w1.id, user_id: u2.id, vendor: "producer", price: 2
 b3 = Bottle.create!(wine_id: w3.id, user_id: u1.id, vendor: "producer", price: 30, drunk: false)
 b4 = Bottle.create!(wine_id: w2.id, user_id: u2.id, vendor: "producer", price: 30, drunk: false)
 
-n1 = Note.create!(bottle_id: b1.id, appearance: "clear", nose: "apples", palate: "pears", conclusion: "Yummy", rating: 8, maturity: "Can drink now, but will improve")
-n2 = Note.create!(bottle_id: b2.id, appearance: "clear", nose: "cherries", palate: "plums", conclusion: "Delicous", rating: 7, maturity: "Ready")
-n3 = Note.create!(bottle_id: b3.id, appearance: "clear", nose: "blackcurrant", palate: "strawberry", conclusion: "Horrible", rating: 1, maturity: "Too young")
-n4 = Note.create!(bottle_id: b1.id, appearance: "clear", nose: "bananas", palate: "pineapples", conclusion: "Yuck", rating: 0, maturity: "Past its best")
-n5 = Note.create!(bottle_id: b4.id, appearance: "clear", nose: "avocado", palate: "mould", conclusion: "disgusting", rating: 3, maturity: "Will improve")
+n1 = Note.create!(bottle_id: b1.id, appearance: "clear", nose: "apples", palate: "pears", conclusion: "Yummy", rating: "7", maturity: "Can drink now, but will improve")
+n2 = Note.create!(bottle_id: b2.id, appearance: "clear", nose: "cherries", palate: "plums", conclusion: "Delicous", rating: "9", maturity: "Ready")
+n3 = Note.create!(bottle_id: b3.id, appearance: "clear", nose: "blackcurrant", palate: "strawberry", conclusion: "Horrible", rating: "7", maturity: "Too young")
+n4 = Note.create!(bottle_id: b1.id, appearance: "clear", nose: "bananas", palate: "pineapples", conclusion: "Yuck", rating: "5", maturity: "Past its best")
+n5 = Note.create!(bottle_id: b4.id, appearance: "clear", nose: "avocado", palate: "mould", conclusion: "disgusting", rating: "8", maturity: "Will improve")
