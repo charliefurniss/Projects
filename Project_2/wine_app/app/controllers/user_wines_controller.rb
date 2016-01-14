@@ -9,7 +9,7 @@ class UserWinesController < ApplicationController
 
   def show
     
-    @notes = Note.where("bottle_id = #{@wine.id}")
+    @notes = Note.joins(:bottle).where(bottles: { :user_id => current_user, :wine_id => @wine })
 
     @note = Note.new
 

@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   def index
+    @users = User.all
   end
 
   def show
+
+    @wines = Wine.joins(:bottle).where(bottles: { :user_id => 1 })
+    
   end
 
   def new

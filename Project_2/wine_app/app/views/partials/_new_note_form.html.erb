@@ -2,24 +2,24 @@
 
 <%= form_for :note, :url => {action: 'wine_note_new', controller: 'notes'} do |f| %>
 
-	    <div class="field">
+	    <div class="field" id="textInput">
 	    	<%= f.label :appearance %>
-	    	<%= f.text_field :appearance %>
+	    	<%= f.text_area :appearance %>
 	    </div>
 
-	    <div class="field">
+	    <div class="field" id="textInput">
 	    	<%= f.label :nose %>
-	    	<%= f.text_field :nose %>
+	    	<%= f.text_area :nose %>
 	    </div>
 
-	    <div class="field">
+	    <div class="field" id="textInput">
 	    	<%= f.label :palate %>
-	    	<%= f.text_field :palate %>
+	    	<%= f.text_area :palate %>
 	    </div>
 
-	    <div class="field">
+	    <div class="field" id="textInput">
 	    	<%= f.label :conclusion %>
-	    	<%= f.text_field :conclusion %>
+	    	<%= f.text_area :conclusion %>
 	    </div>
 
 	    <div class="field">
