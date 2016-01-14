@@ -16,8 +16,29 @@
 			<% @wines.each do |wine| %>	
 			<% full_name = "#{wine.producer} #{wine.name} #{wine.vintage}"	%>
 			<% quantity = wine.bottles.where(:user => current_user, :drunk => false).count %>
+			<% if wine.style == "sparkling" %>
+
+				<% style_url = "/assets/champagne.jpg" %>
+
+			<% elsif wine.style == "red" %>
+
+				<% style_url = "/assets/red.jpg" %>
+				
+			<% elsif wine.style == "white" %>
+
+				<% style_url = "/assets/white.jpg" %>
+			
+			<% elsif wine.style == "rose" %>
+
+				<% style_url = "/assets/rose.jpg" %>
+
+			<% elsif wine.style == "sweet" %>
+
+				<% style_url = "/assets/sweet.jpg" %>				
+
+			<% end %>
 				<tr>
-					<td><%= image_tag("http://akamai.bbr.com/images/products/25601.jpg", size: "50x30") %></td>
+					<td><%= image_tag(style_url, size: "50x30") %></td>
 					<td>
 						<% if controller_name == "user_wines" %>
 							

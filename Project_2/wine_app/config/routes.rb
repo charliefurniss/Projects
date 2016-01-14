@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :notes
 
-  resources :users , only: [:new , :index, :show, :create]
+  resources :users
 
   resources :wines
 

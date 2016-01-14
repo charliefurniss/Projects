@@ -1,6 +1,24 @@
 <div class="row" id="mainBackground">
   <div class="small-10 small-offset-1 columns">
-  	<h5 class="head">User wines</h5>    
-    <%= render "/partials/all_wines" %>
+  	<h5 class="head">User profile</h5>    
+    <div class="row">	
+    	<div class="large-12 medium-12 small-12 columns">
+    		<table>
+    			<tr>
+    				<td class="profileCategory"><strong>Name</td></strong><td class="userDetails"><%= @user.name %></td>
+    			</tr>
+    			<tr>
+    				<td class="profileCategory"><strong>Email</td></strong><td class="userDetails"><%= @user.email %></td>
+    			</tr>
+    			<tr>
+    				<td class="profileCategory"><strong>Password</td></strong><td class="userDetails"><%= @user.password_digest %></td>
+    			</tr>			
+    		</table>
+    		<%= link_to 'Edit profile' , edit_user_path %>
+    	</div>
+    </div>
   </div>
 </div>
+
+
+

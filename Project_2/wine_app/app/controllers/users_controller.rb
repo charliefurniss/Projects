@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
+  before_action :authenticate, only: [:show]
   def index
-    @users = User.all
   end
 
   def show
 
-    @wines = Wine.joins(:bottle).where(bottles: { :user_id => 1 })
+    @user = current_user
     
   end
 
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
     if @user.save
 
-      redirect_to action: 'index'
+      redirect_to user_path
 
     else
       # shows the user the completed form again
@@ -42,6 +42,20 @@ class UsersController < ApplicationController
     end
     
   end
+
+  def edit
+
+    @user = current_user
+    
+  end
+
+  def update
+
+    current_user.update(user_params)
+
+    redirect_to user_path
+
+  end  
 
   private
 
