@@ -1,0 +1,59 @@
+<% if @wine.style == "sparkling" %>
+
+	<% bottle_url = "/assets/champagne.jpg" %>
+
+<% elsif @wine.style == "red" %>
+
+	<% bottle_url = "/assets/red.jpg" %>
+	
+<% elsif @wine.style == "white" %>
+
+	<% bottle_url = "/assets/white.jpg" %>
+
+<% elsif @wine.style == "rose" %>
+
+	<% bottle_url = "/assets/rose.jpg" %>
+
+<% elsif @wine.style == "sweet" %>
+
+	<% bottle_url = "/assets/sweet.jpg" %>				
+
+<% end %>
+
+<div class="small-3 columns">
+	<%= image_tag(bottle_url, :class => "showImage") %>
+</div>
+<div class="small-6 columns">
+	<div class="wineDetails">
+		<h3 class="wineName"><%= @wine.producer %></h3>
+		<h3 class="wineName"><%= "#{@wine.name} #{@wine.vintage}" %></h3>
+		<p class = "wineSpec"><a><%= @wine.style %></a>
+			
+			 |
+		
+		<a><%= @wine.alcohol %>%</a>
+			
+			 |
+	
+		<a><%= @wine.region %></a>
+			
+			 |
+	
+		<a><%= @wine.country %></a>
+		
+		|
+		
+		<a><%= @wine.grape %></a>
+			
+			 |
+	
+		<a><%= "#{@wine.window_start}–#{@wine.window_end}" %></a>
+		</p>
+	</div>
+</div>
+
+
+
+
+
+
