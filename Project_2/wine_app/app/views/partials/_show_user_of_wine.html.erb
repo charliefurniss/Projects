@@ -1,7 +1,6 @@
-<h6>Users</h6>
+<div class="wineUsers">
+	<h6>Users</h6>
 	<% @users.each do |user| %>
-
 		<tr><%= link_to user.name.titleize, users_path(user) %></tr><br/>
-
 	<% end %>
 </div>

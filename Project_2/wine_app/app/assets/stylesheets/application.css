@@ -16,6 +16,75 @@
 
  */
 
+#topNav {
+
+	background-color: black !important;
+	background-size: cover;
+
+}
+
+#mainBackground {
+
+	background-color: #272727 !important;
+	background-size: cover;
+	padding-bottom: 20px;
+
+}
+
+#subNav, #notesArea {
+
+	background-color: #F4F3F3 !important;
+
+}
+
+.top-bar .name h1 a {
+
+	padding-left: 0px !important;
+
+}
+
+#addNoteToDrink {
+
+	position: relative;	
+	height: 250px;
+	padding: 0px;
+
+}
+
+#addNoteButton {
+
+	position: absolute;
+	right: 0px;
+	margin: 0px;
+	bottom: 0px;
+
+}
+
+#toDrink {
+
+	clear: right;
+	float: right;
+	color: white;
+	padding: 16px 23px;
+	text-align: center;
+	background-color: red;
+
+}
+
+.head {
+
+	margin-top: 20px;
+	color: white;
+
+}
+
+.backLink {
+
+	margin: 20px 0px;
+	color: white !important;
+
+}
+
 table, .wineForm {
 
 	margin: 0 auto;
@@ -26,6 +95,12 @@ table, .wineForm {
 .sub-nav li {
 
 	margin-left: 0px;
+
+}
+
+#addNoteToDrink {
+
+	float: right;
 
 }
 
@@ -53,36 +128,45 @@ table, .wineForm {
 .wineName {
 
 	font-size: 33px;
+	color: white;
 
 }
 
 .wineDetails {
 
-	float: right;
-	border: black 1px solid;
-	padding: 5px;
+	position:relative;
+	padding-bottom: 10px;
+	height: 250px;
 
 }
 
-.quantity, .window {
+.wineSpec {
+
+	position: absolute;
+	bottom: 0px;
+
+}
+
+/*.quantity, .window {
 
 	text-align: center;
 
-}
+}*/
 
 .showImage {
 
 	display: inline-block;
 	vertical-align: middle;
+	height: 250px;
 }
 
-.notesArea {
+/*.notesArea {
 
 	margin-top: 10px;
-	padding: 20px;
+	padding: 0px !important;
 	background-color: #f3f5f6;
 
-}
+}*/
 
 .subNav {
 

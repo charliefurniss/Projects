@@ -13,84 +13,90 @@
     <%= csrf_meta_tags %>
   </head>
 
-<div class="row" id="content">
+  <body>
+    <div class="row" id="topNav">
+      <div class="small-10 small-offset-1 columns">
+         <div class="contain-to-grid sticky">   
+          <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+              <li class="name">
+                <h1><a href="/">CellarBook</a></h1>
+              </li>
+               <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+              <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
 
-  <div class="small-10 small-offset-1 columns">
-    <body>
-
-     <div class="contain-to-grid sticky">   
-      <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-          <li class="name">
-            <h1><a href="/">CellarBook</a></h1>
-          </li>
-           <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-
-        <section class="top-bar-section">
-          <!-- Right Nav Section -->
-          <ul class="right">
-            <li class="has-form">
-              <div class="row collapse">
-                <div class="large-8 small-9 columns">
-                  <input type="text" placeholder="eg, wine, region, user">
-                </div>
-                <div class="large-4 small-3 columns">
-                  <a href="#" class="alert button expand">Search</a>
-                </div>
-              </div>
-            </li>
-            <li>
-              <a><%= link_to 'Add wine', new_wine_path %></a>
-            </li>
-
-            <% if current_user %>
+            <section class="top-bar-section">
+              <!-- Right Nav Section -->
               <ul class="right">
-                <li class="active"><%= link_to 'Log out' , sessions_path , method: :delete, data: {confirm: 'Are you sure?'} %></li>
+                <!-- <li class="has-form">
+                  <div class="row collapse">
+                    <div class="large-8 small-9 columns">
+                      <input type="text" placeholder="eg, wine, region, user">
+                    </div>
+                    <div class="large-4 small-3 columns">
+                      <a href="#" class="alert button expand">Search</a>
+                    </div>
+                  </div>
+                </li> -->
+                <li>
+                  <a><%= link_to 'Add wine', new_wine_path %></a>
+                </li>
+
+                <% if current_user %>
+                  <ul class="right">
+                    <li class="active"><%= link_to 'Log out' , sessions_path , method: :delete, data: {confirm: 'Are you sure?'} %></li>
+                  </ul>
+                <% else %>           
+                  <ul class="left">
+                    <li><a href="/sessions/new">Sign in</a></li>
+                  </ul>
+                  <ul class="right">
+                    <li class="active"><a href="/users/new">Sign up</a></li>
+                  </ul>
+                <% end %>  
               </ul>
-            <% else %>           
+
+              <!-- Left Nav Section -->
               <ul class="left">
-                <li><a href="/sessions/new">Sign in</a></li>
+                <li><a href="/wines">Wines</a></li>
+                <li><a href="/notes">Notes</a></li>
               </ul>
-              <ul class="right">
-                <li class="active"><a href="/users/new">Sign up</a></li>
-              </ul>
-            <% end %>  
-          </ul>
+            </section>
+          </nav>
+         </div>
+        </div> 
+      </div>
+  
+      <div class="row" id="subNav">
+        <div class="small-10 small-offset-1 columns">  
+         <% if current_user %>
 
-          <!-- Left Nav Section -->
-          <ul class="left">
-            <li><a href="/wines">Wines</a></li>
-            <li><a href="/notes">Notes</a></li>
-          </ul>
-        </section>
-      </nav>
-     </div> 
+            <% if controller_name == "user_wines" %>
+              
+              <%= render "/partials/user_wines_subnav" %>
 
-     <% if current_user %>
+            <% elsif controller_name == "user_notes" %>
 
-        <% if controller_name == "user_wines" %>
-          
-          <%= render "/partials/user_wines_subnav" %>
+              <%= render "/partials/user_notes_subnav" %> 
 
-        <% elsif controller_name == "user_notes" %>
+            <% else %>
 
-          <%= render "/partials/user_notes_subnav" %> 
+              <%= render "/partials/unmarked_subnav" %>   
 
-        <% else %>
+            <% end %>
 
-          <%= render "/partials/unmarked_subnav" %>   
+         <% end %>
+        </div>
+      </div>
 
-        <% end %>
+      <!-- <div class="row" id="title">
+        <div class="small-10 small-offset-1 columns">   
+          <h5><%= @title %></h5>
+        </div>
+      </div> -->
 
-     <% end %>
-
-    <div class="small-12 large-12 medium-12 columns">
-      <h5><%= @title %></h5>
-    </div> 
-
-    <%= yield %>
+      <%= yield %>
      
     </body>
    </div>

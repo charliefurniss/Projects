@@ -117,7 +117,7 @@ $aluminum    : #999999;
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
+$secondary-color: #909090;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
@@ -1242,12 +1242,12 @@ $aluminum    : #999999;
 // $include-html-nav-classes: $include-html-classes;
 
 // We use these to control margin and padding
-$sub-nav-list-margin: rem-calc(0 -16 18);
-$sub-nav-list-padding-top: rem-calc(8);
+$sub-nav-list-margin: rem-calc(13 -16 13);
+$sub-nav-list-padding-top: rem-calc(0);
 
 // We use this to control the definition
 // $sub-nav-font-family: $body-font-family;
-// $sub-nav-font-size: rem-calc(14);
+$sub-nav-font-size: rem-calc(14);
 // $sub-nav-font-color: $aluminum;
 // $sub-nav-font-weight: $font-weight-normal;
 // $sub-nav-text-decoration: none;
@@ -1403,7 +1403,7 @@ $sub-nav-list-padding-top: rem-calc(8);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $aluminum;
+$topbar-bg-color: black;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1411,8 +1411,8 @@ $topbar-bg-color: $aluminum;
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
-// $topbar-title-weight: $font-weight-normal;
-// $topbar-title-font-size: rem-calc(17);
+$topbar-title-weight: bold;
+$topbar-title-font-size: rem-calc(20);
 
 // Set the link colors and styles for top-level nav
 // $topbar-link-color: $white;

@@ -18,6 +18,8 @@ class UserWinesController < ApplicationController
     @quantity = @bottles.count
 
     @users = @wine.users
+
+    # binding.pry
   
   end
 

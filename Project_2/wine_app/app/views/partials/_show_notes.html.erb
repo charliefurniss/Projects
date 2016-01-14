@@ -1,51 +1,40 @@
 <div class="row">
-	<div class="large-12 medium-12 small-12 columns">
+	<div class="small-12 columns">
 		<table>
 			<thead>
 			    <tr>
-			    <th width="30">Date</th>
-			    <th width="30">User</th>
-		      	<th width="150">Name</th>
-		      	<th width="100">Note</th>
-		      	<th width="150">Rating</th>
+				    <th>Date</th>
+				    <th>User</th>
+			      	<th>Name</th>
+			      	<th>Note</th>
+			      	<th>Rating</th>
 			    </tr>
 			</thead>
-
 			<tbody>
-
 				<% @notes.each do |note| %>
-
 				<% full_name = "#{note.bottle.wine.producer} #{note.bottle.wine.name} #{note.bottle.wine.vintage}"	%>
-
-				<% rating = note.rating %>
-										
+				<% rating = note.rating %>						
 					<tr>
 						<td><%= localize(note.created_at, :format => :uk) %></td>
 						<td><%= note.bottle.user.name %></td>
 						<td><%= full_name %></td>
-						
-						<% if controller_name == "user_notes" %>
-
-							<td><%= link_to truncate(note.conclusion, :length => 5), user_note_path(note) %></td>
-
-						<% elsif controller_name == "notes" %>
-
-							<td><%= link_to truncate(note.conclusion, :length => 5), note %></td>
-
+	
+						<% if controller_name == "user_notes" || controller_name == "user_wines" %>
+							<td><%= link_to truncate(note.conclusion, :length => 50), user_note_path(note) %></td>
+						<% elsif controller_name == "notes" || controller_name == "wines" %>
+							<td><%= link_to truncate(note.conclusion, :length => 50), note %></td>
 						<% end %>
 
-
-
-
-
 						<td class="rating">
+						
 							<% (1..rating).each do |i| %>
 							  <i class="fa fa-star-o"></i>
 							<% end %>
+						
 						</td>
 					</tr>
 				<% end %>
 			</tbody>
-		</table>	
+		</table>
 	</div>
-</div>		
+</div>
